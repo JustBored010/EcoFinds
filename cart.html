@@ -75,10 +75,10 @@
             </div>
           </div>
           <div class="flex items-center justify-center sm:justify-end gap-2 w-full sm:w-auto">
-            <button onclick="updateQty(${index}, -1)" class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 font-bold flex items-center justify-center hover:bg-gray-300">-</button>
-            <span class="w-8 text-center font-semibold text-lg">${item.qty}</span>
-            <button onclick="updateQty(${index}, 1)" class="w-8 h-8 rounded-full bg-green-500 text-white font-bold flex items-center justify-center hover:bg-green-600">+</button>
-            <button onclick="removeItem(${index})" class="ml-2 text-red-500 hover:text-red-700">✕</button>
+            <button onclick="updateQty(${index}, -1)" class="w-9 h-9 rounded-full bg-gray-200 text-gray-600 font-bold flex items-center justify-center hover:bg-gray-300">-</button>
+            <span class="w-10 text-center font-semibold text-lg">${item.qty}</span>
+            <button onclick="updateQty(${index}, 1)" class="w-9 h-9 rounded-full bg-green-500 text-white font-bold flex items-center justify-center hover:bg-green-600">+</button>
+            <button onclick="removeItem(${index})" class="ml-2 text-red-500 hover:text-red-700" aria-label="Remove item">✕</button>
           </div>
         `;
         container.appendChild(itemEl);
@@ -101,8 +101,8 @@
     function updateSummary() {
       let subtotal = 0;
       cartData.forEach(item => subtotal += item.price * item.qty);
-      let tax = subtotal * 0.05;
-      let total = subtotal + tax;
+      const tax = subtotal * 0.05;
+      const total = subtotal + tax;
 
       document.getElementById("subtotal").textContent = `₹${subtotal.toFixed(0)}`;
       document.getElementById("tax").textContent = `₹${tax.toFixed(0)}`;
@@ -111,13 +111,10 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       renderCart();
-      // Add event listener for the checkout button
       document.getElementById('checkout-btn').addEventListener('click', () => {
         window.location.href = 'checkout.html';
       });
     });
-
-    document.addEventListener("DOMContentLoaded", renderCart);
   </script>
 </body>
 </html>
