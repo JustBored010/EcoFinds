@@ -27,12 +27,14 @@
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="cart.html" class="relative" aria-label="Cart">
+        <!-- Fixed Cart Icon -->
+        <a href="cart.html" class="relative cursor-pointer" aria-label="View Cart">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.706.707 1.706H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
-          <span id="cart-count" class="absolute -top-1 -right-1 px-2 py-0.5 text-xs font-bold bg-red-600 text-white rounded-full">3</span>
+          <span id="cart-count" class="absolute -top-1 -right-1 px-2 py-0.5 text-xs font-bold bg-red-600 text-white rounded-full">0</span>
         </a>
+
         <!-- Profile / menu -->
         <div class="relative">
           <button id="menu-btn" class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm" aria-haspopup="true" aria-expanded="false">J</button>
@@ -156,7 +158,6 @@
       editPrice.value = item.price;
       editCategory.value = item.category || '';
       overlay.classList.remove('hidden');
-      // basic focus handling
       setTimeout(()=>editTitle.focus(), 0);
     }
     function closeEdit(){
@@ -186,6 +187,10 @@
     document.addEventListener('DOMContentLoaded', () => {
       closeMenu();
       render();
+
+      // Example dynamic cart count
+      const cartCount = document.getElementById('cart-count');
+      cartCount.textContent = 3; // simulate fetching cart count
     });
   </script>
 </body>
