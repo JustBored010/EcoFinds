@@ -15,7 +15,7 @@
                 <img src="https://github.com/JustBored010/EcoFinds/blob/main/assets/images/R_cropped.png?raw=true" alt="EcoFinds Logo" class="w-8 h-8">
                 <h1 class="text-xl md:text-2xl font-bold">Dashboard</h1>
             </div>
-            <!-- Cart Icon and Profile Placeholder -->
+            <!-- Cart Icon Only -->
             <div class="flex items-center space-x-4">
                 <div class="relative flex items-center">
                     <a href="cart.html" class="relative">
@@ -28,7 +28,7 @@
             </div>
         </header>
 
-        <!-- Main Content (Left Panel Only) -->
+        <!-- Main Content -->
         <div class="flex flex-col items-center justify-center">
             <!-- User Profile Section -->
             <div class="border border-gray-200 rounded-2xl p-6 w-full max-w-md md:max-w-none">
@@ -49,7 +49,7 @@
                 <h2 class="text-xl font-semibold mb-6">Navigations</h2>
                 <div class="space-y-4">
                     <a href="listing.html" class="w-full block text-center px-6 py-4 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 transition-colors duration-300">My listings</a>
-                    <a href="purchases.html" class="w-full block text-center px-6 py-4 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 transition-colors duration-300">My Purchases</a>
+                    <a href="history.html" class="w-full block text-center px-6 py-4 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 transition-colors duration-300">My Purchases</a>
                 </div>
             </div>
         </div>
@@ -60,17 +60,9 @@
             const profileInitial = document.getElementById('profile-initial');
             const cartCountSpan = document.getElementById('cart-count');
 
-            // Note: The following network calls have been replaced with simulated data.
-            // The original code tried to connect to a backend server at http://localhost:3000,
-            // which is not running in this browser environment. For a real application,
-            // you would need to have a running server (like the `server.js` file) to
-            // handle these requests.
-
             // Simulates fetching user profile data from a backend
             async function fetchUserProfile() {
                 try {
-                    // This is the simulated user data. You can change the 'name' here
-                    // to see the profile initial change.
                     const user = {
                         name: "Jane Doe",
                         email: "jane.doe@example.com"
@@ -79,7 +71,6 @@
                     userNameInput.value = user.name || '';
                     userEmailInput.value = user.email || '';
                     
-                    // This line takes the first letter of the user's name and displays it.
                     profileInitial.textContent = user.name ? user.name.charAt(0).toUpperCase() : 'J';
                 } catch (error) {
                     console.error("Error fetching user profile:", error);
