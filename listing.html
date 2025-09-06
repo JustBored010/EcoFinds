@@ -1,205 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EcoFinds | My Listings</title>
-
-  <!-- Tailwind + Font -->
+  <title>My Listings</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    body { font-family: 'Inter', sans-serif; background:#f0fdf4; color:#1f2937; }
-    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-    @keyframes slideInFromTop { from{transform:translateY(-20px);opacity:0} to{transform:translateY(0);opacity:1} }
-    .animate-fadeIn{ animation:fadeIn 0.8s ease-in-out }
-    .animate-slideInFromTop{ animation:slideInFromTop 0.6s ease-out }
-  </style>
 </head>
-<body class="p-3 md:p-4">
+<body class="min-h-screen bg-gradient-to-br from-green-50 to-gray-50 text-gray-800 p-4">
+  <div class="mx-auto max-w-6xl bg-white rounded-3xl shadow-2xl p-6 md:p-10">
 
-  <!-- Mobile Header -->
-  <header class="md:hidden flex justify-between items-center bg-green-700 text-white px-4 py-3 relative">
-    <button id="menu-btn" class="text-white font-bold">☰</button>
-    <h1 class="text-lg font-semibold">EcoFinds</h1>
-    <div class="relative">
-      <button id="profile-btn-m" class="w-8 h-8 rounded-full bg-white text-green-700 font-bold">J</button>
-      <div id="profile-menu-m" class="hidden absolute right-0 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg z-50">
-        <a href="profile.html" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
-        <a href="listing.html" class="block px-4 py-2 hover:bg-gray-100">Listings</a>
-        <a href="sell.html" class="block px-4 py-2 hover:bg-gray-100">Sell Product</a>
-        <a href="history.html" class="block px-4 py-2 hover:bg-gray-100">History</a>
-        <a href="cart.html" class="block px-4 py-2 hover:bg-gray-100">Cart</a>
-        <a href="auth/logout.html" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a>
+    <!-- Back Button -->
+    <a href="landing.html"
+       class="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gray-200 text-gray-700 font-bold rounded-full hover:bg-gray-300 transition-colors duration-300 w-max">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+      </svg>
+      Back
+    </a>
+
+    <!-- Header -->
+    <header class="flex items-center justify-between mb-8">
+      <div class="flex items-center gap-2">
+        <img src="https://github.com/JustBored010/EcoFinds/blob/main/assets/images/R_cropped.png?raw=true" class="w-8 h-8" alt="EcoFinds"/>
+        <h1 class="text-xl md:text-2xl font-bold">My Listings</h1>
       </div>
-    </div>
-  </header>
 
-  <!-- Sidebar -->
-  <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-green-800 text-white p-6 shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-50">
-    <div class="flex items-center gap-2 mb-6">
-      <img src="assets/images/R_cropped.png" class="h-8 w-8 rounded-full" alt="EcoFinds"/>
-      <span class="text-white font-semibold">EcoFinds</span>
-    </div>
-    <nav>
-      <ul class="space-y-2">
-        <li><a href="landing.html" class="block px-3 py-2 rounded-lg hover:bg-green-600">Home</a></li>
-        <li><a href="browse.html" class="block px-3 py-2 rounded-lg hover:bg-green-600">Browse</a></li>
-        <li><a href="listing.html" class="block px-3 py-2 rounded-lg bg-green-600">My Listings</a></li>
-        <li><a href="sell.html" class="block px-3 py-2 rounded-lg hover:bg-green-600">Sell Product</a></li>
-        <li><a href="about.html" class="block px-3 py-2 rounded-lg hover:bg-green-600">About</a></li>
-        <li><a href="contact.html" class="block px-3 py-2 rounded-lg hover:bg-green-600">Contact</a></li>
-      </ul>
-    </nav>
-  </aside>
-
-  <!-- Overlay -->
-  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden"></div>
-
-  <!-- Main Content -->
-  <main class="md:ml-64">
-    <!-- Header (desktop) -->
-    <header class="hidden md:flex justify-between items-center bg-white shadow px-6 py-4 animate-slideInFromTop">
-      <h1 class="text-xl font-semibold">My Listings</h1>
-      <div class="relative">
-        <button id="profile-menu-btn" class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">J</button>
-        <div id="profile-menu" class="hidden absolute right-0 mt-2 w-44 bg-white border rounded-lg shadow-lg z-50">
-          <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
-          <a href="listing.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Listings</a>
-          <a href="sell.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sell Product</a>
-          <a href="history.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">History</a>
-          <a href="cart.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
-          <a href="auth/logout.html" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a>
+      <div class="flex items-center gap-3">
+        <a href="cart.html" class="relative" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.706.707 1.706H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span id="cart-count" class="absolute -top-1 -right-1 px-2 py-0.5 text-xs font-bold bg-red-600 text-white rounded-full">3</span>
+        </a>
+        <!-- Profile / menu -->
+        <div class="relative">
+          <button id="menu-btn" class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm" aria-haspopup="true" aria-expanded="false">J</button>
+          <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 transition transform origin-top-right opacity-0 scale-95 pointer-events-none">
+            <a href="profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100">Profile</a>
+            <a href="sell.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100">Sell an Item</a>
+            <a href="auth/logout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100">Logout</a>
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- Listings -->
-    <div class="p-4 md:p-6 animate-fadeIn">
-      <h2 class="text-2xl font-bold text-green-700 mb-6">Items I’m Selling</h2>
-      <div id="listing-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Example Listing -->
-        <div class="listing-card bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
-          <img src="https://via.placeholder.com/250x160" alt="Product" class="rounded-lg mb-3 w-full h-40 object-cover">
-          <div class="listing-title font-bold text-lg">Reusable Bamboo Bottle</div>
-          <div class="listing-desc text-gray-600 text-sm mb-2">Eco-friendly bottle made from 100% bamboo.</div>
-          <div class="listing-price text-green-600 font-bold mb-3">₹15</div>
-          <div class="flex gap-2">
-            <button class="edit-btn flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 py-2 rounded-lg">Edit</button>
-            <button class="delete-btn flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Delete</button>
-          </div>
-        </div>
-
-        <div class="listing-card bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
-          <img src="https://via.placeholder.com/250x160" alt="Product" class="rounded-lg mb-3 w-full h-40 object-cover">
-          <div class="listing-title font-bold text-lg">Organic Cotton Bag</div>
-          <div class="listing-desc text-gray-600 text-sm mb-2">Durable bag made from organic cotton fibers.</div>
-          <div class="listing-price text-green-600 font-bold mb-3">₹10</div>
-          <div class="flex gap-2">
-            <button class="edit-btn flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 py-2 rounded-lg">Edit</button>
-            <button class="delete-btn flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Delete</button>
-          </div>
-        </div>
-
-      </div>
+    <!-- Toolbar -->
+    <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between mb-6">
+      <input id="search" type="text" placeholder="Search your listings..." class="w-full sm:w-72 px-4 py-2 rounded-full border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500">
+      <a href="sell.html" class="px-5 py-2 rounded-full bg-green-600 hover:bg-green-700 text-white font-semibold text-center">+ New Listing</a>
     </div>
-  </main>
+
+    <!-- Listings Grid -->
+    <div id="listings" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+  </div>
 
   <!-- Edit Modal -->
-  <div id="edit-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg shadow-lg p-6 w-96">
-      <h3 class="text-lg font-bold mb-4">Edit Listing</h3>
-      <form id="edit-form" class="space-y-3">
-        <input type="text" id="edit-title" class="w-full border rounded p-2" placeholder="Title">
-        <textarea id="edit-desc" class="w-full border rounded p-2" placeholder="Description"></textarea>
-        <input type="number" id="edit-price" class="w-full border rounded p-2" placeholder="Price">
-        <div class="flex justify-end gap-2 mt-4">
-          <button type="button" id="cancel-edit" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Cancel</button>
-          <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Save</button>
-        </div>
-      </form>
+  <div id="edit-overlay" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-30">
+    <div class="bg-white w-11/12 max-w-md rounded-2xl p-6 shadow-xl">
+      <h3 class="text-xl font-bold mb-4">Edit Listing</h3>
+      <div class="space-y-3">
+        <input id="edit-title" type="text" class="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:ring-2 focus:ring-green-500" placeholder="Title">
+        <input id="edit-price" type="number" min="0" step="0.01" class="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:ring-2 focus:ring-green-500" placeholder="Price">
+        <input id="edit-category" type="text" class="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:ring-2 focus:ring-green-500" placeholder="Category">
+      </div>
+      <div class="flex gap-3 justify-end mt-6">
+        <button id="edit-cancel" class="px-4 py-2 rounded-full border border-gray-300">Cancel</button>
+        <button id="edit-save" class="px-4 py-2 rounded-full bg-green-600 text-white">Save</button>
+      </div>
     </div>
   </div>
 
-  <!-- JS -->
   <script>
-    // Sidebar toggle
+    // Mock data
+    let items = [
+      { id: 1, title: "Upcycled Denim Pouch", price: 22, category: "Fashion", img: "https://placehold.co/300x200/DCFCE7/1E293B?text=Pouch" },
+      { id: 2, title: "Bamboo Toothbrush Set", price: 9.5, category: "Personal Care", img: "https://placehold.co/300x200/DCFCE7/1E293B?text=Brush" },
+      { id: 3, title: "Recycled Glass Tumbler", price: 15, category: "Home Goods", img: "https://placehold.co/300x200/DCFCE7/1E293B?text=Glass" },
+      { id: 4, title: "Organic Cotton Tote", price: 12, category: "Fashion", img: "https://placehold.co/300x200/DCFCE7/1E293B?text=Tote" }
+    ];
+
+    const listingsEl = document.getElementById('listings');
+    const searchEl = document.getElementById('search');
+
+    // Profile dropdown
     const menuBtn = document.getElementById('menu-btn');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    menuBtn?.addEventListener('click', () => {
-      sidebar.classList.toggle('-translate-x-full');
-      overlay.classList.toggle('hidden');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    function openMenu(){ dropdownMenu.classList.remove('pointer-events-none','opacity-0','scale-95'); menuBtn.setAttribute('aria-expanded','true'); }
+    function closeMenu(){ dropdownMenu.classList.add('pointer-events-none','opacity-0','scale-95'); menuBtn.setAttribute('aria-expanded','false'); }
+    menuBtn.addEventListener('click', (e)=>{ e.stopPropagation(); const isOpen=!dropdownMenu.classList.contains('opacity-0'); isOpen?closeMenu():openMenu(); });
+    window.addEventListener('click', (e)=>{ if(!dropdownMenu.contains(e.target)&&!menuBtn.contains(e.target)) closeMenu(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+
+    function cardTemplate(item){
+      return `
+        <div class="rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition p-4 flex flex-col">
+          <div class="rounded-xl overflow-hidden mb-3 aspect-video bg-gray-100">
+            <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-bold text-lg">${item.title}</h3>
+          <p class="text-green-700 font-semibold">₹${item.price.toFixed(2)}</p>
+          <p class="text-sm text-gray-500 mb-4">${item.category}</p>
+          <div class="mt-auto flex gap-2">
+            <button data-action="edit" data-id="${item.id}" class="flex-1 px-4 py-2 rounded-full bg-emerald-600 text-white hover:bg-emerald-700">Edit</button>
+            <button data-action="delete" data-id="${item.id}" class="px-4 py-2 rounded-full border border-red-300 text-red-600 hover:bg-red-50">Delete</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function render(list = items){
+      const q = (searchEl.value || '').toLowerCase().trim();
+      const filtered = q ? list.filter(i => i.title.toLowerCase().includes(q) || (i.category||'').toLowerCase().includes(q)) : list;
+      listingsEl.innerHTML = filtered.map(cardTemplate).join('') || `
+        <div class="col-span-full text-center text-gray-500">No listings found.</div>
+      `;
+    }
+
+    // Event delegation for edit/delete
+    listingsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-action]');
+      if(!btn) return;
+      const id = Number(btn.dataset.id);
+      const action = btn.dataset.action;
+
+      if(action === 'delete'){
+        items = items.filter(i => i.id !== id);
+        render();
+        return;
+      }
+
+      if(action === 'edit'){
+        const item = items.find(i => i.id === id);
+        if(!item) return;
+        openEdit(item);
+      }
     });
-    overlay?.addEventListener('click', () => {
-      sidebar.classList.add('-translate-x-full');
+
+    // Search
+    searchEl.addEventListener('input', render);
+
+    // Simple Edit Modal
+    const overlay = document.getElementById('edit-overlay');
+    const editTitle = document.getElementById('edit-title');
+    const editPrice = document.getElementById('edit-price');
+    const editCategory = document.getElementById('edit-category');
+    const btnCancel = document.getElementById('edit-cancel');
+    const btnSave = document.getElementById('edit-save');
+    let editingId = null;
+
+    function openEdit(item){
+      editingId = item.id;
+      editTitle.value = item.title;
+      editPrice.value = item.price;
+      editCategory.value = item.category || '';
+      overlay.classList.remove('hidden');
+      // basic focus handling
+      setTimeout(()=>editTitle.focus(), 0);
+    }
+    function closeEdit(){
       overlay.classList.add('hidden');
-    });
+      editingId = null;
+    }
+    overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeEdit(); });
+    btnCancel.addEventListener('click', closeEdit);
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeEdit(); });
 
-    // Desktop profile dropdown
-    const profileBtn = document.getElementById('profile-menu-btn');
-    const profileMenu = document.getElementById('profile-menu');
-    profileBtn?.addEventListener('click', e => { 
-      e.stopPropagation(); 
-      profileMenu.classList.toggle('hidden'); 
-    });
-    document.addEventListener('click', e => { 
-      if (profileMenu && !profileMenu.contains(e.target) && e.target !== profileBtn){ 
-        profileMenu.classList.add('hidden'); 
+    btnSave.addEventListener('click', () => {
+      if(editingId == null) return;
+      const i = items.findIndex(x => x.id === editingId);
+      if(i >= 0){
+        items[i] = {
+          ...items[i],
+          title: editTitle.value.trim() || items[i].title,
+          price: Math.max(0, parseFloat(editPrice.value) || items[i].price),
+          category: editCategory.value.trim() || items[i].category
+        };
       }
+      render();
+      closeEdit();
     });
 
-    // Mobile profile dropdown
-    const profileBtnM = document.getElementById('profile-btn-m');
-    const profileMenuM = document.getElementById('profile-menu-m');
-    profileBtnM?.addEventListener('click', e => {
-      e.stopPropagation();
-      profileMenuM.classList.toggle('hidden');
-    });
-    document.addEventListener('click', e => {
-      if (profileMenuM && !profileMenuM.contains(e.target) && e.target !== profileBtnM) {
-        profileMenuM.classList.add('hidden');
-      }
-    });
-
-    // Delete functionality
-    document.querySelectorAll('.delete-btn').forEach(btn => {
-      btn.addEventListener('click', e => {
-        const card = e.target.closest('.listing-card');
-        card.remove();
-      });
-    });
-
-    // Edit popup
-    const modal = document.getElementById('edit-modal');
-    const editForm = document.getElementById('edit-form');
-    const cancelEdit = document.getElementById('cancel-edit');
-    let currentCard = null;
-
-    document.querySelectorAll('.edit-btn').forEach(btn => {
-      btn.addEventListener('click', e => {
-        currentCard = e.target.closest('.listing-card');
-        document.getElementById('edit-title').value = currentCard.querySelector('.listing-title').textContent;
-        document.getElementById('edit-desc').value = currentCard.querySelector('.listing-desc').textContent;
-        document.getElementById('edit-price').value = currentCard.querySelector('.listing-price').textContent.replace('₹','');
-        modal.classList.remove('hidden');
-      });
-    });
-
-    cancelEdit.addEventListener('click', () => {
-      modal.classList.add('hidden');
-    });
-
-    editForm.addEventListener('submit', e => {
-      e.preventDefault();
-      if (currentCard) {
-        currentCard.querySelector('.listing-title').textContent = document.getElementById('edit-title').value;
-        currentCard.querySelector('.listing-desc').textContent = document.getElementById('edit-desc').value;
-        currentCard.querySelector('.listing-price').textContent = '₹' + document.getElementById('edit-price').value;
-      }
-      modal.classList.add('hidden');
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      closeMenu();
+      render();
     });
   </script>
 </body>
