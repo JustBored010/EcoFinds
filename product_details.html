@@ -38,7 +38,7 @@
 
     <!-- Image -->
     <div class="relative w-full mb-4">
-      <img id="mainImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUXdLjLhVEv9fB07q_sUoj7SkbVFq0VZOGUg&s" alt="Product Image" class="product-image w-full h-64 object-cover rounded-xl shadow-md">
+      <img id="mainImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUXdLjLhVEv9fB07q_sUoj7SkbVFq0VZOGUg&s" alt="Organic Cotton Shirt" class="product-image w-full h-64 object-cover rounded-xl shadow-md">
     </div>
 
     <!-- Product Title and Price -->
@@ -77,10 +77,10 @@
 
     // Populate product details dynamically
     document.addEventListener("DOMContentLoaded", () => {
-      const name = getQueryParam("name") || "Reusable Bamboo Bottle";
-      const price = getQueryParam("price") || "15";
-      const desc = getQueryParam("desc") || "Stay hydrated the eco-friendly way with our bamboo water bottle. Made from natural materials, it's reusable, biodegradable, and designed to reduce single-use plastics. Perfect for everyday use!";
-      const img = getQueryParam("img") || "https://placehold.co/400x260/8BC34A/ffffff?text=Product+Image";
+      const name = getQueryParam("name") || "Organic Cotton Shirt";
+      const price = getQueryParam("price") || "25";
+      const desc = getQueryParam("desc") || "Soft t-shirt made from 100% organic cotton!";
+      const img = getQueryParam("img") || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUXdLjLhVEv9fB07q_sUoj7SkbVFq0VZOGUg&s";
 
       document.getElementById("productName").textContent = name;
       document.getElementById("productPrice").textContent = `₹${price}`;
