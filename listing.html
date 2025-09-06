@@ -10,72 +10,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Inter', sans-serif; background:#f0fdf4; color:#1f2937; overflow-x:hidden; }
+    body { font-family: 'Inter', sans-serif; background:#f0fdf4; color:#1f2937; }
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }
     @keyframes slideInFromTop { from{transform:translateY(-20px);opacity:0} to{transform:translateY(0);opacity:1} }
     .animate-fadeIn{ animation:fadeIn 0.8s ease-in-out }
     .animate-slideInFromTop{ animation:slideInFromTop 0.6s ease-out }
-
-    /* Keep your card style */
-    .listing-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s;
-    }
-    .listing-card:hover { transform: translateY(-4px); }
-    .listing-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 0.8rem;
-    }
-    .listing-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #2f3d2c;
-      margin-bottom: 0.3rem;
-    }
-    .listing-desc {
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 0.8rem;
-    }
-    .listing-price {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #4caf50;
-      margin-bottom: 0.8rem;
-    }
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-    .actions button {
-      flex: 1;
-      padding: 0.5rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-    }
-    .edit-btn { background: #ffc107; color: #2f3d2c; }
-    .edit-btn:hover { background: #e0a800; }
-    .delete-btn { background: #f44336; color: white; }
-    .delete-btn:hover { background: #d32f2f; }
   </style>
 </head>
 <body class="p-3 md:p-4">
 
+  <!-- Mobile Header -->
+  <header class="md:hidden flex justify-between items-center bg-green-700 text-white px-4 py-3">
+    <button id="menu-btn" class="text-white font-bold">☰</button>
+    <h1 class="text-lg font-semibold">EcoFinds</h1>
+    <button id="profile-btn-m" class="w-8 h-8 rounded-full bg-white text-green-700 font-bold">J</button>
+  </header>
+
   <!-- Sidebar -->
-  <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-green-800 text-white p-6 shadow-lg">
+  <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-green-800 text-white p-6 shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300">
     <div class="flex items-center gap-2 mb-6">
       <img src="assets/images/R_cropped.png" class="h-8 w-8 rounded-full" alt="EcoFinds"/>
       <span class="text-white font-semibold">EcoFinds</span>
@@ -92,10 +44,13 @@
     </nav>
   </aside>
 
+  <!-- Overlay for mobile -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden"></div>
+
   <!-- Main Content -->
-  <main class="ml-64">
-    <!-- Header -->
-    <header class="flex justify-between items-center bg-white shadow px-6 py-4 animate-slideInFromTop">
+  <main class="md:ml-64">
+    <!-- Header (desktop) -->
+    <header class="hidden md:flex justify-between items-center bg-white shadow px-6 py-4 animate-slideInFromTop">
       <h1 class="text-xl font-semibold">My Listings</h1>
       <!-- User Menu -->
       <div class="relative">
@@ -112,41 +67,41 @@
     </header>
 
     <!-- Listings -->
-    <div class="p-6 animate-fadeIn">
+    <div class="p-4 md:p-6 animate-fadeIn">
       <h2 class="text-2xl font-bold text-green-700 mb-6">Items I’m Selling</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Example Listing -->
-        <div class="listing-card">
-          <img src="https://via.placeholder.com/250x160" alt="Product">
-          <div class="listing-title">Reusable Bamboo Bottle</div>
-          <div class="listing-desc">Eco-friendly bottle made from 100% bamboo.</div>
-          <div class="listing-price">₹15</div>
-          <div class="actions">
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
+        <div class="bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/250x160" alt="Product" class="rounded-lg mb-3 w-full h-40 object-cover">
+          <div class="font-bold text-lg">Reusable Bamboo Bottle</div>
+          <div class="text-gray-600 text-sm mb-2">Eco-friendly bottle made from 100% bamboo.</div>
+          <div class="text-green-600 font-bold mb-3">₹15</div>
+          <div class="flex gap-2">
+            <button class="edit-btn flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 py-2 rounded-lg">Edit</button>
+            <button class="delete-btn flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Delete</button>
           </div>
         </div>
 
-        <div class="listing-card">
-          <img src="https://via.placeholder.com/250x160" alt="Product">
-          <div class="listing-title">Organic Cotton Bag</div>
-          <div class="listing-desc">Durable bag made from organic cotton fibers.</div>
-          <div class="listing-price">₹10</div>
-          <div class="actions">
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
+        <div class="bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/250x160" alt="Product" class="rounded-lg mb-3 w-full h-40 object-cover">
+          <div class="font-bold text-lg">Organic Cotton Bag</div>
+          <div class="text-gray-600 text-sm mb-2">Durable bag made from organic cotton fibers.</div>
+          <div class="text-green-600 font-bold mb-3">₹10</div>
+          <div class="flex gap-2">
+            <button class="edit-btn flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 py-2 rounded-lg">Edit</button>
+            <button class="delete-btn flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Delete</button>
           </div>
         </div>
 
-        <div class="listing-card">
-          <img src="https://via.placeholder.com/250x160" alt="Product">
-          <div class="listing-title">Plant-Based Cutlery Set</div>
-          <div class="listing-desc">Biodegradable cutlery perfect for eco dining.</div>
-          <div class="listing-price">₹8</div>
-          <div class="actions">
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
+        <div class="bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/250x160" alt="Product" class="rounded-lg mb-3 w-full h-40 object-cover">
+          <div class="font-bold text-lg">Plant-Based Cutlery Set</div>
+          <div class="text-gray-600 text-sm mb-2">Biodegradable cutlery perfect for eco dining.</div>
+          <div class="text-green-600 font-bold mb-3">₹8</div>
+          <div class="flex gap-2">
+            <button class="edit-btn flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 py-2 rounded-lg">Edit</button>
+            <button class="delete-btn flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Delete</button>
           </div>
         </div>
 
@@ -154,18 +109,39 @@
     </div>
   </main>
 
-  <!-- JS for dropdown -->
+  <!-- JS -->
   <script>
+    // Sidebar toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    menuBtn?.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+      overlay.classList.toggle('hidden');
+    });
+    overlay?.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    });
+
+    // Profile dropdown
     const profileBtn = document.getElementById('profile-menu-btn');
     const profileMenu = document.getElementById('profile-menu');
-    profileBtn.addEventListener('click', e => { 
+    profileBtn?.addEventListener('click', e => { 
       e.stopPropagation(); 
       profileMenu.classList.toggle('hidden'); 
     });
     document.addEventListener('click', e => { 
-      if (!profileMenu.contains(e.target) && e.target !== profileBtn){ 
+      if (profileMenu && !profileMenu.contains(e.target) && e.target !== profileBtn){ 
         profileMenu.classList.add('hidden'); 
       }
+    });
+
+    // Edit buttons -> go to sell.html
+    document.querySelectorAll('.edit-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = 'sell.html';
+      });
     });
   </script>
 </body>
