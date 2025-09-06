@@ -23,31 +23,21 @@ Name: Hari Naraayan V
 
 Email: harinaraayan012@gmail.com
 
-Phone: +91 7406527379
-
 Team Members
 
 Vasudev R
 
 Email: Vasudev.sr05@gmail.com
 
-Phone: 6366470690
-
-Passing Year: 2027
-
 Athul Krishna
 
 Email: athulak040917@gmail.com
-
-Phone: 7560968075
 
 Passing Year: 2027
 
 Jadyn Philips
 
 Email: jadsujth@gmail.com
-
-Phone: 9082198881
 
 Passing Year: 2027
 
