@@ -1,1 +1,52 @@
 /* Global custom styles for EcoFinds */
+
+
+/* =============================
+   Responsive Enhancements
+   ============================= */
+
+/* General fluid elements */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Tablet (<= 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+    .container {
+        width: 95%;
+    }
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .grid, .row {
+        display: block;
+    }
+}
+
+/* Mobile (<= 480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    header, footer, nav {
+        text-align: center;
+    }
+    .btn, button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    .card, .product, .listing {
+        width: 100% !important;
+    }
+}
