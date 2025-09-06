@@ -84,6 +84,17 @@
     </div>
   </header>
 
+  <!-- Search -->
+  <section class="mt-6 space-y-4 animate-fadeIn">
+    <input type="text" placeholder="Search ...."
+           class="w-full p-3 rounded-full bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"/>
+  </section>
+
+  <!-- Hero banner -->
+  <section class="mt-8 rounded-2xl h-48 md:h-64 overflow-hidden animate-fadeIn">
+    <img src="assets/images/updated_2_banner.png" alt="EcoFinds Banner" class="w-full h-full object-cover rounded-2xl"/>
+  </section>
+
   <!-- Product grid -->
   <section class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
     <a href="product_details.html" class="block">
@@ -110,6 +121,36 @@
       </div>
     </a>
   </section>
+
+  <!-- Featured products -->
+  <section class="my-16 animate-fadeIn">
+    <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">Featured Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="product_details.html" class="block">
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+          <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+          <h3 class="text-xl font-semibold text-green-700">Handmade Soap</h3>
+          <p class="text-gray-500">Artisan soap made with natural, plant-based ingredients.</p>
+        </div>
+      </a>
+      <a href="product_details.html" class="block">
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+          <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+          <h3 class="text-xl font-semibold text-green-700">Recycled Glass Vases</h3>
+          <p class="text-gray-500">Elegant vases crafted from reclaimed glass bottles.</p>
+        </div>
+      </a>
+      <a href="product_details.html" class="block">
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+          <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+          <h3 class="text-xl font-semibold text-green-700">Compostable Phone Case</h3>
+          <p class="text-gray-500">A sturdy, compostable phone case.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Rest of your landing content (testimonials, CTA, about, footer, etc.) remains unchanged -->
 
   <script>
     const openMenuBtn = document.getElementById('open-menu');
