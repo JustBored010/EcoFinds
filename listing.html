@@ -27,7 +27,7 @@
   </header>
 
   <!-- Sidebar -->
-  <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-green-800 text-white p-6 shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300">
+  <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-green-800 text-white p-6 shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-50">
     <div class="flex items-center gap-2 mb-6">
       <img src="assets/images/R_cropped.png" class="h-8 w-8 rounded-full" alt="EcoFinds"/>
       <span class="text-white font-semibold">EcoFinds</span>
@@ -44,15 +44,14 @@
     </nav>
   </aside>
 
-  <!-- Overlay for mobile -->
+  <!-- Overlay -->
   <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden"></div>
 
   <!-- Main Content -->
   <main class="md:ml-64">
-    <!-- Header (desktop) -->
+    <!-- Header -->
     <header class="hidden md:flex justify-between items-center bg-white shadow px-6 py-4 animate-slideInFromTop">
       <h1 class="text-xl font-semibold">My Listings</h1>
-      <!-- User Menu -->
       <div class="relative">
         <button id="profile-menu-btn" class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">J</button>
         <div id="profile-menu" class="hidden absolute right-0 mt-2 w-44 bg-white border rounded-lg shadow-lg z-50">
@@ -69,36 +68,25 @@
     <!-- Listings -->
     <div class="p-4 md:p-6 animate-fadeIn">
       <h2 class="text-2xl font-bold text-green-700 mb-6">Items I’m Selling</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div id="listing-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Example Listing -->
-        <div class="bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
+        <div class="listing-card bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
           <img src="https://via.placeholder.com/250x160" alt="Product" class="rounded-lg mb-3 w-full h-40 object-cover">
-          <div class="font-bold text-lg">Reusable Bamboo Bottle</div>
-          <div class="text-gray-600 text-sm mb-2">Eco-friendly bottle made from 100% bamboo.</div>
-          <div class="text-green-600 font-bold mb-3">₹15</div>
+          <div class="listing-title font-bold text-lg">Reusable Bamboo Bottle</div>
+          <div class="listing-desc text-gray-600 text-sm mb-2">Eco-friendly bottle made from 100% bamboo.</div>
+          <div class="listing-price text-green-600 font-bold mb-3">₹15</div>
           <div class="flex gap-2">
             <button class="edit-btn flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 py-2 rounded-lg">Edit</button>
             <button class="delete-btn flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Delete</button>
           </div>
         </div>
 
-        <div class="bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
+        <div class="listing-card bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
           <img src="https://via.placeholder.com/250x160" alt="Product" class="rounded-lg mb-3 w-full h-40 object-cover">
-          <div class="font-bold text-lg">Organic Cotton Bag</div>
-          <div class="text-gray-600 text-sm mb-2">Durable bag made from organic cotton fibers.</div>
-          <div class="text-green-600 font-bold mb-3">₹10</div>
-          <div class="flex gap-2">
-            <button class="edit-btn flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 py-2 rounded-lg">Edit</button>
-            <button class="delete-btn flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Delete</button>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-4 flex flex-col justify-between hover:shadow-lg transition">
-          <img src="https://via.placeholder.com/250x160" alt="Product" class="rounded-lg mb-3 w-full h-40 object-cover">
-          <div class="font-bold text-lg">Plant-Based Cutlery Set</div>
-          <div class="text-gray-600 text-sm mb-2">Biodegradable cutlery perfect for eco dining.</div>
-          <div class="text-green-600 font-bold mb-3">₹8</div>
+          <div class="listing-title font-bold text-lg">Organic Cotton Bag</div>
+          <div class="listing-desc text-gray-600 text-sm mb-2">Durable bag made from organic cotton fibers.</div>
+          <div class="listing-price text-green-600 font-bold mb-3">₹10</div>
           <div class="flex gap-2">
             <button class="edit-btn flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 py-2 rounded-lg">Edit</button>
             <button class="delete-btn flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Delete</button>
@@ -108,6 +96,22 @@
       </div>
     </div>
   </main>
+
+  <!-- Edit Modal -->
+  <div id="edit-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+      <h3 class="text-lg font-bold mb-4">Edit Listing</h3>
+      <form id="edit-form" class="space-y-3">
+        <input type="text" id="edit-title" class="w-full border rounded p-2" placeholder="Title">
+        <textarea id="edit-desc" class="w-full border rounded p-2" placeholder="Description"></textarea>
+        <input type="number" id="edit-price" class="w-full border rounded p-2" placeholder="Price">
+        <div class="flex justify-end gap-2 mt-4">
+          <button type="button" id="cancel-edit" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- JS -->
   <script>
@@ -137,11 +141,42 @@
       }
     });
 
-    // Edit buttons -> go to sell.html
-    document.querySelectorAll('.edit-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        window.location.href = 'sell.html';
+    // Delete functionality
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const card = e.target.closest('.listing-card');
+        card.remove();
       });
+    });
+
+    // Edit popup
+    const modal = document.getElementById('edit-modal');
+    const editForm = document.getElementById('edit-form');
+    const cancelEdit = document.getElementById('cancel-edit');
+    let currentCard = null;
+
+    document.querySelectorAll('.edit-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        currentCard = e.target.closest('.listing-card');
+        document.getElementById('edit-title').value = currentCard.querySelector('.listing-title').textContent;
+        document.getElementById('edit-desc').value = currentCard.querySelector('.listing-desc').textContent;
+        document.getElementById('edit-price').value = currentCard.querySelector('.listing-price').textContent.replace('₹','');
+        modal.classList.remove('hidden');
+      });
+    });
+
+    cancelEdit.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    editForm.addEventListener('submit', e => {
+      e.preventDefault();
+      if (currentCard) {
+        currentCard.querySelector('.listing-title').textContent = document.getElementById('edit-title').value;
+        currentCard.querySelector('.listing-desc').textContent = document.getElementById('edit-desc').value;
+        currentCard.querySelector('.listing-price').textContent = '₹' + document.getElementById('edit-price').value;
+      }
+      modal.classList.add('hidden');
     });
   </script>
 </body>
