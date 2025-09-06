@@ -84,10 +84,26 @@
     </div>
   </header>
 
-  <!-- Search -->
+  <!-- Search & Filters -->
   <section class="mt-6 space-y-4 animate-fadeIn">
-    <input type="text" placeholder="Search ...."
+    <input id="search-bar" type="text" placeholder="Search ...."
            class="w-full p-3 rounded-full bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"/>
+
+    <div class="flex flex-wrap gap-3">
+      <select id="category-filter" class="p-3 rounded-lg bg-white shadow-sm border">
+        <option value="">All Categories</option>
+        <option value="home">Home</option>
+        <option value="fashion">Fashion</option>
+        <option value="stationery">Stationery</option>
+        <option value="bath">Bath</option>
+        <option value="tech">Tech</option>
+      </select>
+
+      <input id="price-filter" type="number" placeholder="Max Price" class="p-3 rounded-lg bg-white shadow-sm border w-40"/>
+      <button id="clear-filters" class="hidden px-5 py-2 bg-gray-200 rounded-lg shadow hover:bg-gray-300 transition">Clear Filters</button>
+    </div>
+
+    <p id="results-count" class="text-sm text-gray-600"></p>
   </section>
 
   <!-- Hero banner -->
@@ -96,79 +112,146 @@
   </section>
 
   <!-- Product grid -->
-  <section class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
-    <a href="product_details.html" class="block">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
-        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+  <section id="product-section" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
+    <!-- Product cards (8 items) -->
+    <a href="product_details.html" class="block product-card" data-category="home" data-price="15">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1585325701954-348adf9c7df7?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
         <h3 class="text-xl font-semibold text-green-700">Recycled Planter</h3>
         <p class="text-gray-500">Eco-friendly planter made from recycled plastic.</p>
+        <p class="mt-2 font-semibold text-gray-800">$15</p>
       </div>
     </a>
 
-    <a href="product_details.html" class="block">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
-        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+    <a href="product_details.html" class="block product-card" data-category="fashion" data-price="25">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1600185365483-26d7a79e228e?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
         <h3 class="text-xl font-semibold text-green-700">Organic Cotton Shirt</h3>
         <p class="text-gray-500">Soft t-shirt made from 100% organic cotton.</p>
+        <p class="mt-2 font-semibold text-gray-800">$25</p>
       </div>
     </a>
 
-    <a href="product_details.html" class="block">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
-        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+    <a href="product_details.html" class="block product-card" data-category="stationery" data-price="10">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
         <h3 class="text-xl font-semibold text-green-700">Upcycled Notebook</h3>
         <p class="text-gray-500">Notebook with a unique cover made from reclaimed materials.</p>
+        <p class="mt-2 font-semibold text-gray-800">$10</p>
+      </div>
+    </a>
+
+    <a href="product_details.html" class="block product-card" data-category="bath" data-price="8">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1617224887809-fdb77e3b8242?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold text-green-700">Handmade Soap</h3>
+        <p class="text-gray-500">Artisan soap made with natural, plant-based ingredients.</p>
+        <p class="mt-2 font-semibold text-gray-800">$8</p>
+      </div>
+    </a>
+
+    <a href="product_details.html" class="block product-card" data-category="home" data-price="20">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold text-green-700">Recycled Glass Vases</h3>
+        <p class="text-gray-500">Elegant vases crafted from reclaimed glass bottles.</p>
+        <p class="mt-2 font-semibold text-gray-800">$20</p>
+      </div>
+    </a>
+
+    <a href="product_details.html" class="block product-card" data-category="tech" data-price="30">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1616627988785-02e74fcae1c0?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold text-green-700">Compostable Phone Case</h3>
+        <p class="text-gray-500">A sturdy, compostable phone case.</p>
+        <p class="mt-2 font-semibold text-gray-800">$30</p>
+      </div>
+    </a>
+
+    <a href="product_details.html" class="block product-card" data-category="fashion" data-price="18">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1606813908981-bcd2bc6f0d35?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold text-green-700">Recycled Tote Bag</h3>
+        <p class="text-gray-500">Durable tote bag made from repurposed materials.</p>
+        <p class="mt-2 font-semibold text-gray-800">$18</p>
+      </div>
+    </a>
+
+    <a href="product_details.html" class="block product-card" data-category="home" data-price="22">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold text-green-700">Eco Bamboo Cutlery Set</h3>
+        <p class="text-gray-500">Reusable bamboo fork, spoon, knife, and straw.</p>
+        <p class="mt-2 font-semibold text-gray-800">$22</p>
       </div>
     </a>
   </section>
 
-  <!-- Featured products -->
-  <section class="my-16 animate-fadeIn">
-    <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">Featured Products</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <a href="product_details.html" class="block">
-        <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-          <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
-          <h3 class="text-xl font-semibold text-green-700">Handmade Soap</h3>
-          <p class="text-gray-500">Artisan soap made with natural, plant-based ingredients.</p>
-        </div>
-      </a>
-      <a href="product_details.html" class="block">
-        <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-          <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
-          <h3 class="text-xl font-semibold text-green-700">Recycled Glass Vases</h3>
-          <p class="text-gray-500">Elegant vases crafted from reclaimed glass bottles.</p>
-        </div>
-      </a>
-      <a href="product_details.html" class="block">
-        <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-          <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
-          <h3 class="text-xl font-semibold text-green-700">Compostable Phone Case</h3>
-          <p class="text-gray-500">A sturdy, compostable phone case.</p>
-        </div>
-      </a>
-    </div>
-  </section>
+  <!-- Empty state -->
+  <div id="empty-state" class="hidden mt-8 text-center py-12 bg-white rounded-xl shadow-md">
+    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M9 13h6a4 4 0 100-8H9a4 4 0 000 8z" />
+    </svg>
+    <h3 class="mt-4 text-lg font-semibold text-gray-800">No results found</h3>
+    <p class="text-gray-500 mb-4">Try adjusting your search or filters to find what you’re looking for.</p>
+    <button id="reset-filters-empty"
+            class="px-5 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition">
+      Reset Filters
+    </button>
+  </div>
 
-  <!-- Rest of your landing content (testimonials, CTA, about, footer, etc.) remains unchanged -->
-
+  <!-- JS -->
   <script>
-    const openMenuBtn = document.getElementById('open-menu');
-    const closeMenuBtn = document.getElementById('close-menu');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
+    const searchBar = document.getElementById("search-bar");
+    const categoryFilter = document.getElementById("category-filter");
+    const priceFilter = document.getElementById("price-filter");
+    const productCards = document.querySelectorAll(".product-card");
+    const clearBtn = document.getElementById("clear-filters");
+    const resultsCount = document.getElementById("results-count");
+    const productSection = document.getElementById("product-section");
+    const emptyState = document.getElementById("empty-state");
+    const resetEmptyBtn = document.getElementById("reset-filters-empty");
 
-    function openSidebar(){ sidebar.classList.add('open'); overlay.style.display='block'; }
-    function closeSidebar(){ sidebar.classList.remove('open'); overlay.style.display='none'; }
+    function filterProducts() {
+      const query = searchBar.value.toLowerCase().trim();
+      const category = categoryFilter.value;
+      const maxPrice = priceFilter.value ? parseFloat(priceFilter.value) : Infinity;
 
-    openMenuBtn.addEventListener('click', openSidebar);
-    closeMenuBtn.addEventListener('click', closeSidebar);
-    overlay.addEventListener('click', closeSidebar);
+      let visibleCount = 0;
 
-    const profileBtn = document.getElementById('profile-menu-btn');
-    const profileMenu = document.getElementById('profile-menu');
-    profileBtn.addEventListener('click', e => { e.stopPropagation(); profileMenu.classList.toggle('hidden'); });
-    document.addEventListener('click', e => { if (!profileMenu.contains(e.target) && e.target !== profileBtn){ profileMenu.classList.add('hidden'); }});
-  </script>
-</body>
-</html>
+      productCards.forEach(card => {
+        const matches =
+          card.innerText.toLowerCase().includes(query) &&
+          (!category || card.dataset.category === category) &&
+          parseFloat(card.dataset.price) <= maxPrice;
+
+        card.style.display = matches ? "block" : "none";
+        if (matches) visibleCount++;
+      });
+
+      if (visibleCount === 0) {
+        productSection.classList.add("hidden");
+        emptyState.classList.remove("hidden");
+        resultsCount.textContent = "No products found";
+      } else {
+        productSection.classList.remove("hidden");
+        emptyState.classList.add("hidden");
+        resultsCount.textContent = query || category || priceFilter.value
+          ? `Showing ${visibleCount} product${visibleCount > 1 ? "s" : ""}`
+          : `Showing all ${productCards.length} products`;
+      }
+
+      clearBtn.classList.toggle("hidden", !(query || category || priceFilter.value));
+    }
+
+    function clearAllFilters() {
+      searchBar.value = "";
+      categoryFilter.value = "";
+      priceFilter.value = "";
+      filterProducts();
+    }
+
+    searchBar.addEventListener("input", filterProducts);
+    categoryFilter.addEventListener("change", filterProducts);
+    priceFilter
