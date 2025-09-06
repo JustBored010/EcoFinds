@@ -36,7 +36,7 @@
         </div>
 
         <!-- Add Product Form -->
-        <form class="space-y-6">
+        <form class="space-y-6" id="add-product-form">
             <!-- Product Image Section -->
             <div class="border border-gray-200 rounded-2xl p-6 text-center">
                 <div class="mb-4">
@@ -132,11 +132,25 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="w-full px-6 py-4 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 transition-colors duration-300">
+            <button type="submit" id="add-item-btn" class="w-full px-6 py-4 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 transition-colors duration-300">
                 Add Item
             </button>
         </form>
     </div>
 
+    <script>
+        // Get the form and button elements
+        const form = document.getElementById('add-product-form');
+        const addItemBtn = document.getElementById('add-item-btn');
+
+        // Add a click event listener to the button
+        addItemBtn.addEventListener('click', (event) => {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+            console.log("Attempting to redirect to landing.html...");
+            // Use window.open with '_self' to force navigation in the current tab.
+            window.open('landing.html', '_self');
+        });
+    </script>
 </body>
 </html>
