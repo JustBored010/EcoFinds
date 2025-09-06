@@ -1,158 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Purchases</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Purchases</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="p-4 bg-gradient-to-br from-green-50 to-gray-50 text-gray-800 flex items-center justify-center min-h-screen font-sans">
-    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-5xl w-full p-8 md:p-12">
-        <!-- Header -->
-        <header class="flex justify-between items-center mb-10">
-            <div class="flex items-center space-x-2">
-                <img src="https://github.com/JustBored010/EcoFinds/blob/main/assets/images/R_cropped.png?raw=true" alt="EcoFinds Logo" class="w-8 h-8">
-                <h1 class="text-xl md:text-2xl font-bold">My Purchases</h1>
-            </div>
-            <!-- Cart Icon and Profile Placeholder with Dropdown -->
-            <div class="flex items-center space-x-4">
-                <div class="relative flex items-center">
-                    <a href="cart.html" class="relative">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.706.707 1.706H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
-                    </a>
-                </div>
-                <!-- Profile Dropdown Menu -->
-                <div class="relative">
-                    <button id="menu-btn" class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">J</button>
-                    <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 transition-transform duration-300 transform origin-top-right scale-95 opacity-0">
-                        <a href="profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 transition-colors duration-300">Profile</a>
-                        <a href="cart.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 transition-colors duration-300">Cart</a>
-                        <a href="auth/logout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 transition-colors duration-300">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </header>
+  <div class="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-5xl w-full p-6 md:p-12">
+    
+    <!-- Back Button -->
+    <a href="landing.html"
+       class="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gray-200 text-gray-700 font-bold rounded-full hover:bg-gray-300 transition-colors duration-300 w-max">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+      </svg>
+      Back
+    </a>
 
-        <!-- Purchases List -->
-        <div id="purchases-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Purchase cards will be dynamically inserted here -->
+    <!-- Header -->
+    <header class="flex justify-between items-center mb-10">
+      <div class="flex items-center space-x-2">
+        <img src="https://github.com/JustBored010/EcoFinds/blob/main/assets/images/R_cropped.png?raw=true" alt="EcoFinds Logo" class="w-8 h-8">
+        <h1 class="text-xl md:text-2xl font-bold">My Purchases</h1>
+      </div>
+      <!-- Cart Icon and Profile Placeholder with Dropdown -->
+      <div class="flex items-center space-x-4">
+        <div class="relative flex items-center">
+          <a href="cart.html" class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.706.707 1.706H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
+          </a>
         </div>
+        <!-- Profile Dropdown Menu -->
+        <div class="relative">
+          <button id="menu-btn" class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">J</button>
+          <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 transition-transform duration-300 transform origin-top-right scale-95 opacity-0">
+            <a href="profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 transition-colors duration-300">Profile</a>
+            <a href="cart.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 transition-colors duration-300">Cart</a>
+            <a href="auth/logout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 transition-colors duration-300">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
+    <!-- Purchases List -->
+    <div id="purchases-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Purchase cards will be dynamically inserted here -->
     </div>
 
-    <script>
-        const cartCountSpan = document.getElementById('cart-count');
-        const menuBtn = document.getElementById('menu-btn');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        const purchasesContainer = document.getElementById('purchases-container');
+  </div>
 
-        // Toggle the dropdown menu visibility
-        menuBtn.addEventListener('click', (event) => {
-            event.stopPropagation();
-            dropdownMenu.classList.toggle('hidden');
-            dropdownMenu.classList.toggle('scale-95');
-            dropdownMenu.classList.toggle('opacity-0');
-        });
+  <script>
+    const cartCountSpan = document.getElementById('cart-count');
+    const menuBtn = document.getElementById('menu-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const purchasesContainer = document.getElementById('purchases-container');
 
-        // Close the dropdown menu if a click occurs outside of it
-        window.addEventListener('click', (event) => {
-            if (!menuBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.classList.add('hidden');
-                dropdownMenu.classList.add('scale-95');
-                dropdownMenu.classList.add('opacity-0');
-            }
-        });
+    // Toggle the dropdown menu visibility
+    menuBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      dropdownMenu.classList.toggle('hidden');
+      dropdownMenu.classList.toggle('scale-95');
+      dropdownMenu.classList.toggle('opacity-0');
+    });
 
-        // Simulates fetching cart count from a backend
-        async function fetchCartCount() {
-            try {
-                // This would be an API call to get the real cart count
-                const data = {
-                    count: 3
-                };
-                cartCountSpan.textContent = data.count || 0;
-            } catch (error) {
-                console.error("Error fetching cart count:", error);
-                cartCountSpan.textContent = '...';
-            }
-        }
-        
-        // Mock data for purchased items
-        const mockPurchases = [{
-            name: "Recycled Glass Tumbler",
-            price: 15.00,
-            category: "Home Goods",
-            seller: "Green Earth Co.",
-            image: "https://placehold.co/100x100/A0E7A2/333333?text=Glass"
-        }, {
-            name: "Bamboo Toothbrush",
-            price: 5.50,
-            category: "Personal Care",
-            seller: "Eco Essentials",
-            image: "https://placehold.co/100x100/A0E7A2/333333?text=Brush"
-        }, {
-            name: "Reusable Produce Bags",
-            price: 12.00,
-            category: "Kitchen",
-            seller: "Sustainable Living",
-            image: "https://placehold.co/100x100/A0E7A2/333333?text=Bags"
-        }, {
-            name: "Upcycled Denim Pouch",
-            price: 22.00,
-            category: "Fashion",
-            seller: "Creative Threads",
-            image: "https://placehold.co/100x100/A0E7A2/333333?text=Pouch"
-        }];
+    // Close the dropdown menu if a click occurs outside of it
+    window.addEventListener('click', (event) => {
+      if (!menuBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.classList.add('hidden');
+        dropdownMenu.classList.add('scale-95');
+        dropdownMenu.classList.add('opacity-0');
+      }
+    });
 
-        // Function to render the purchase cards
-        function renderPurchases(purchases) {
-            purchasesContainer.innerHTML = ''; // Clear existing content
-            if (purchases.length === 0) {
-                purchasesContainer.innerHTML = '<div class="text-center text-gray-500 col-span-full">You have not made any purchases yet.</div>';
-                return;
-            }
+    // Simulates fetching cart count from a backend
+    async function fetchCartCount() {
+      try {
+        // This would be an API call to get the real cart count
+        const data = { count: 3 };
+        cartCountSpan.textContent = data.count || 0;
+      } catch (error) {
+        console.error("Error fetching cart count:", error);
+        cartCountSpan.textContent = '...';
+      }
+    }
+    
+    // Mock data for purchased items
+    const mockPurchases = [
+      {
+        name: "Recycled Glass Tumbler",
+        price: 15.00,
+        category: "Home Goods",
+        seller: "Green Earth Co.",
+        image: "https://placehold.co/100x100/A0E7A2/333333?text=Glass"
+      },
+      {
+        name: "Bamboo Toothbrush",
+        price: 5.50,
+        category: "Personal Care",
+        seller: "Eco Essentials",
+        image: "https://placehold.co/100x100/A0E7A2/333333?text=Brush"
+      },
+      {
+        name: "Reusable Produce Bags",
+        price: 12.00,
+        category: "Kitchen",
+        seller: "Sustainable Living",
+        image: "https://placehold.co/100x100/A0E7A2/333333?text=Bags"
+      },
+      {
+        name: "Upcycled Denim Pouch",
+        price: 22.00,
+        category: "Fashion",
+        seller: "Creative Threads",
+        image: "https://placehold.co/100x100/A0E7A2/333333?text=Pouch"
+      }
+    ];
 
-            purchases.forEach(purchase => {
-                const cardHtml = `
-                    <div class="flex items-center space-x-4 p-4 border border-gray-200 rounded-2xl shadow-sm transition-shadow duration-300 hover:shadow-md">
-                        <div class="flex-shrink-0 w-20 h-20 rounded-xl bg-gray-200 overflow-hidden">
-                            <img src="${purchase.image}" class="w-full h-full object-cover" alt="${purchase.name}">
-                        </div>
-                        <div class="flex-grow">
-                            <h3 class="text-lg font-bold">${purchase.name}</h3>
-                            <p class="text-sm text-green-600 font-semibold mt-1">Price: $${purchase.price.toFixed(2)}</p>
-                            <p class="text-sm text-gray-500">Category: ${purchase.category}</p>
-                            <p class="text-sm text-gray-500">Seller: ${purchase.seller}</p>
-                        </div>
-                    </div>
-                `;
-                purchasesContainer.innerHTML += cardHtml;
-            });
-        }
+    // Function to render the purchase cards
+    function renderPurchases(purchases) {
+      purchasesContainer.innerHTML = ''; // Clear existing content
+      if (purchases.length === 0) {
+        purchasesContainer.innerHTML = '<div class="text-center text-gray-500 col-span-full">You have not made any purchases yet.</div>';
+        return;
+      }
 
-        // Simulates fetching purchases from a backend
-        async function fetchPurchases() {
-            purchasesContainer.innerHTML = '<div class="text-center text-gray-400 col-span-full animate-pulse">Loading purchases...</div>';
-            try {
-                // Simulate a network delay
-                setTimeout(() => {
-                    renderPurchases(mockPurchases);
-                }, 1000);
-            } catch (error) {
-                console.error("Error fetching purchases:", error);
-                purchasesContainer.innerHTML = '<div class="text-center text-red-500 col-span-full">Failed to load purchases. Please try again later.</div>';
-            }
-        }
+      purchases.forEach(purchase => {
+        const cardHtml = `
+          <div class="flex items-center space-x-4 p-4 border border-gray-200 rounded-2xl shadow-sm transition-shadow duration-300 hover:shadow-md">
+            <div class="flex-shrink-0 w-20 h-20 rounded-xl bg-gray-200 overflow-hidden">
+              <img src="${purchase.image}" class="w-full h-full object-cover" alt="${purchase.name}">
+            </div>
+            <div class="flex-grow">
+              <h3 class="text-lg font-bold">${purchase.name}</h3>
+              <p class="text-sm text-green-600 font-semibold mt-1">Price: $${purchase.price.toFixed(2)}</p>
+              <p class="text-sm text-gray-500">Category: ${purchase.category}</p>
+              <p class="text-sm text-gray-500">Seller: ${purchase.seller}</p>
+            </div>
+          </div>
+        `;
+        purchasesContainer.innerHTML += cardHtml;
+      });
+    }
 
-        // Load data on page load
-        window.onload = () => {
-            fetchCartCount();
-            fetchPurchases();
-        };
-    </script>
+    // Simulates fetching purchases from a backend
+    async function fetchPurchases() {
+      purchasesContainer.innerHTML = '<div class="text-center text-gray-400 col-span-full animate-pulse">Loading purchases...</div>';
+      try {
+        // Simulate a network delay
+        setTimeout(() => {
+          renderPurchases(mockPurchases);
+        }, 1000);
+      } catch (error) {
+        console.error("Error fetching purchases:", error);
+        purchasesContainer.innerHTML = '<div class="text-center text-red-500 col-span-full">Failed to load purchases. Please try again later.</div>';
+      }
+    }
+
+    // Load data on page load
+    window.onload = () => {
+      fetchCartCount();
+      fetchPurchases();
+    };
+  </script>
 </body>
 </html>
