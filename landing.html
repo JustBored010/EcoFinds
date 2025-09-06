@@ -84,12 +84,12 @@
     </div>
   </header>
 
-  <!-- Search & Filters -->
+  <!-- Search + Filters -->
   <section class="mt-6 space-y-4 animate-fadeIn">
     <input id="search-bar" type="text" placeholder="Search ...."
            class="w-full p-3 rounded-full bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"/>
 
-    <div class="flex flex-wrap gap-3">
+    <div class="flex flex-wrap gap-3 items-center">
       <select id="category-filter" class="p-3 rounded-lg bg-white shadow-sm border">
         <option value="">All Categories</option>
         <option value="home">Home</option>
@@ -99,95 +99,78 @@
         <option value="tech">Tech</option>
       </select>
 
-      <input id="price-filter" type="number" placeholder="Max Price" class="p-3 rounded-lg bg-white shadow-sm border w-40"/>
-      <button id="clear-filters" class="hidden px-5 py-2 bg-gray-200 rounded-lg shadow hover:bg-gray-300 transition">Clear Filters</button>
+      <!-- Price Slider -->
+      <div class="flex items-center gap-3">
+        <input id="price-filter" type="range" min="0" step="1"
+               class="w-40 accent-green-600 cursor-pointer"/>
+        <span id="price-value" class="text-sm font-medium text-gray-700"></span>
+      </div>
+
+      <button id="clear-filters" class="hidden px-5 py-2 bg-gray-200 rounded-lg shadow hover:bg-gray-300 transition">
+        Clear Filters
+      </button>
     </div>
 
-    <p id="results-count" class="text-sm text-gray-600"></p>
+    <p id="results-count" class="text-sm text-gray-600">Showing all products</p>
   </section>
 
   <!-- Hero banner -->
   <section class="mt-8 rounded-2xl h-48 md:h-64 overflow-hidden animate-fadeIn">
-    <img src="assets/images/updated_2_banner.png" alt="EcoFinds Banner" class="w-full h-full object-cover rounded-2xl"/>
+    <img src="https://images.unsplash.com/photo-1616627984030-c2e25b98e65e" alt="EcoFinds Banner" class="w-full h-full object-cover rounded-2xl"/>
   </section>
 
-  <!-- Product grid -->
+  <!-- Products -->
   <section id="product-section" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
-    <!-- Product cards (8 items) -->
     <a href="product_details.html" class="block product-card" data-category="home" data-price="15">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-        <img src="https://images.unsplash.com/photo-1585325701954-348adf9c7df7?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+        <img src="https://images.unsplash.com/photo-1616627568790-03df4e9ac898" class="h-40 w-full object-cover rounded-lg mb-4"/>
         <h3 class="text-xl font-semibold text-green-700">Recycled Planter</h3>
-        <p class="text-gray-500">Eco-friendly planter made from recycled plastic.</p>
-        <p class="mt-2 font-semibold text-gray-800">$15</p>
+        <p class="text-gray-500">$15 - Eco-friendly planter made from recycled plastic.</p>
       </div>
     </a>
 
     <a href="product_details.html" class="block product-card" data-category="fashion" data-price="25">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-        <img src="https://images.unsplash.com/photo-1600185365483-26d7a79e228e?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+        <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642" class="h-40 w-full object-cover rounded-lg mb-4"/>
         <h3 class="text-xl font-semibold text-green-700">Organic Cotton Shirt</h3>
-        <p class="text-gray-500">Soft t-shirt made from 100% organic cotton.</p>
-        <p class="mt-2 font-semibold text-gray-800">$25</p>
+        <p class="text-gray-500">$25 - Soft t-shirt made from 100% organic cotton.</p>
       </div>
     </a>
 
-    <a href="product_details.html" class="block product-card" data-category="stationery" data-price="10">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+    <a href="product_details.html" class="block product-card" data-category="stationery" data-price="8">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" class="h-40 w-full object-cover rounded-lg mb-4"/>
         <h3 class="text-xl font-semibold text-green-700">Upcycled Notebook</h3>
-        <p class="text-gray-500">Notebook with a unique cover made from reclaimed materials.</p>
-        <p class="mt-2 font-semibold text-gray-800">$10</p>
+        <p class="text-gray-500">$8 - Notebook with a unique cover made from reclaimed materials.</p>
       </div>
     </a>
 
-    <a href="product_details.html" class="block product-card" data-category="bath" data-price="8">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-        <img src="https://images.unsplash.com/photo-1617224887809-fdb77e3b8242?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+    <a href="product_details.html" class="block product-card" data-category="bath" data-price="12">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition">
+        <img src="https://images.unsplash.com/photo-1585238342029-7a63a0898c7c" class="h-40 w-full object-cover rounded-lg mb-4"/>
         <h3 class="text-xl font-semibold text-green-700">Handmade Soap</h3>
-        <p class="text-gray-500">Artisan soap made with natural, plant-based ingredients.</p>
-        <p class="mt-2 font-semibold text-gray-800">$8</p>
+        <p class="text-gray-500">$12 - Artisan soap made with natural, plant-based ingredients.</p>
       </div>
     </a>
 
     <a href="product_details.html" class="block product-card" data-category="home" data-price="20">
       <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+        <img src="https://images.unsplash.com/photo-1563225406-5d7d88b7d44c" class="h-40 w-full object-cover rounded-lg mb-4"/>
         <h3 class="text-xl font-semibold text-green-700">Recycled Glass Vases</h3>
-        <p class="text-gray-500">Elegant vases crafted from reclaimed glass bottles.</p>
-        <p class="mt-2 font-semibold text-gray-800">$20</p>
+        <p class="text-gray-500">$20 - Elegant vases crafted from reclaimed glass bottles.</p>
       </div>
     </a>
 
-    <a href="product_details.html" class="block product-card" data-category="tech" data-price="30">
+    <a href="product_details.html" class="block product-card" data-category="tech" data-price="18">
       <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-        <img src="https://images.unsplash.com/photo-1616627988785-02e74fcae1c0?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
+        <img src="https://images.unsplash.com/photo-1585421514738-94b06c526720" class="h-40 w-full object-cover rounded-lg mb-4"/>
         <h3 class="text-xl font-semibold text-green-700">Compostable Phone Case</h3>
-        <p class="text-gray-500">A sturdy, compostable phone case.</p>
-        <p class="mt-2 font-semibold text-gray-800">$30</p>
-      </div>
-    </a>
-
-    <a href="product_details.html" class="block product-card" data-category="fashion" data-price="18">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-        <img src="https://images.unsplash.com/photo-1606813908981-bcd2bc6f0d35?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
-        <h3 class="text-xl font-semibold text-green-700">Recycled Tote Bag</h3>
-        <p class="text-gray-500">Durable tote bag made from repurposed materials.</p>
-        <p class="mt-2 font-semibold text-gray-800">$18</p>
-      </div>
-    </a>
-
-    <a href="product_details.html" class="block product-card" data-category="home" data-price="22">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
-        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=800&q=80" class="h-40 w-full object-cover rounded-lg mb-4">
-        <h3 class="text-xl font-semibold text-green-700">Eco Bamboo Cutlery Set</h3>
-        <p class="text-gray-500">Reusable bamboo fork, spoon, knife, and straw.</p>
-        <p class="mt-2 font-semibold text-gray-800">$22</p>
+        <p class="text-gray-500">$18 - A sturdy, compostable phone case.</p>
       </div>
     </a>
   </section>
 
-  <!-- Empty state -->
+  <!-- Empty State -->
   <div id="empty-state" class="hidden mt-8 text-center py-12 bg-white rounded-xl shadow-md">
     <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -201,11 +184,41 @@
     </button>
   </div>
 
-  <!-- JS -->
+  <!-- Scripts -->
   <script>
+    // Sidebar toggle
+    const openMenuBtn = document.getElementById('open-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    function openSidebar(){ sidebar.classList.add('open'); overlay.style.display='block'; }
+    function closeSidebar(){ sidebar.classList.remove('open'); overlay.style.display='none'; }
+
+    if (openMenuBtn) openMenuBtn.addEventListener('click', openSidebar);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeSidebar);
+    if (overlay) overlay.addEventListener('click', closeSidebar);
+
+    // Profile menu toggle
+    const profileBtn = document.getElementById('profile-menu-btn');
+    const profileMenu = document.getElementById('profile-menu');
+    if (profileBtn) {
+      profileBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        profileMenu.classList.toggle('hidden');
+      });
+    }
+    document.addEventListener('click', e => {
+      if (profileMenu && !profileMenu.contains(e.target) && e.target !== profileBtn){
+        profileMenu.classList.add('hidden');
+      }
+    });
+
+    // Filters
     const searchBar = document.getElementById("search-bar");
     const categoryFilter = document.getElementById("category-filter");
     const priceFilter = document.getElementById("price-filter");
+    const priceValue = document.getElementById("price-value");
     const productCards = document.querySelectorAll(".product-card");
     const clearBtn = document.getElementById("clear-filters");
     const resultsCount = document.getElementById("results-count");
@@ -213,10 +226,17 @@
     const emptyState = document.getElementById("empty-state");
     const resetEmptyBtn = document.getElementById("reset-filters-empty");
 
+    // Set slider max dynamically
+    const prices = Array.from(productCards).map(card => parseFloat(card.dataset.price));
+    const maxPriceValue = Math.max(...prices);
+    priceFilter.max = maxPriceValue;
+    priceFilter.value = maxPriceValue;
+    priceValue.textContent = `≤ $${maxPriceValue}`;
+
     function filterProducts() {
       const query = searchBar.value.toLowerCase().trim();
       const category = categoryFilter.value;
-      const maxPrice = priceFilter.value ? parseFloat(priceFilter.value) : Infinity;
+      const maxPrice = parseFloat(priceFilter.value);
 
       let visibleCount = 0;
 
@@ -237,21 +257,33 @@
       } else {
         productSection.classList.remove("hidden");
         emptyState.classList.add("hidden");
-        resultsCount.textContent = query || category || priceFilter.value
+        resultsCount.textContent = query || category || maxPrice < maxPriceValue
           ? `Showing ${visibleCount} product${visibleCount > 1 ? "s" : ""}`
           : `Showing all ${productCards.length} products`;
       }
 
-      clearBtn.classList.toggle("hidden", !(query || category || priceFilter.value));
-    }
-
-    function clearAllFilters() {
-      searchBar.value = "";
-      categoryFilter.value = "";
-      priceFilter.value = "";
-      filterProducts();
+      clearBtn.classList.toggle("hidden", !(query || category || maxPrice < maxPriceValue));
     }
 
     searchBar.addEventListener("input", filterProducts);
     categoryFilter.addEventListener("change", filterProducts);
-    priceFilter
+    priceFilter.addEventListener("input", () => {
+      priceValue.textContent = `≤ $${priceFilter.value}`;
+      filterProducts();
+    });
+
+    function clearAllFilters() {
+      searchBar.value = "";
+      categoryFilter.value = "";
+      priceFilter.value = maxPriceValue;
+      priceValue.textContent = `≤ $${maxPriceValue}`;
+      filterProducts();
+    }
+
+    clearBtn.addEventListener("click", clearAllFilters);
+    resetEmptyBtn.addEventListener("click", clearAllFilters);
+
+    filterProducts();
+  </script>
+</body>
+</html>
