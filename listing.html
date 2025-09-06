@@ -20,10 +20,20 @@
 <body class="p-3 md:p-4">
 
   <!-- Mobile Header -->
-  <header class="md:hidden flex justify-between items-center bg-green-700 text-white px-4 py-3">
+  <header class="md:hidden flex justify-between items-center bg-green-700 text-white px-4 py-3 relative">
     <button id="menu-btn" class="text-white font-bold">☰</button>
     <h1 class="text-lg font-semibold">EcoFinds</h1>
-    <button id="profile-btn-m" class="w-8 h-8 rounded-full bg-white text-green-700 font-bold">J</button>
+    <div class="relative">
+      <button id="profile-btn-m" class="w-8 h-8 rounded-full bg-white text-green-700 font-bold">J</button>
+      <div id="profile-menu-m" class="hidden absolute right-0 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg z-50">
+        <a href="profile.html" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+        <a href="listing.html" class="block px-4 py-2 hover:bg-gray-100">Listings</a>
+        <a href="sell.html" class="block px-4 py-2 hover:bg-gray-100">Sell Product</a>
+        <a href="history.html" class="block px-4 py-2 hover:bg-gray-100">History</a>
+        <a href="cart.html" class="block px-4 py-2 hover:bg-gray-100">Cart</a>
+        <a href="auth/logout.html" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a>
+      </div>
+    </div>
   </header>
 
   <!-- Sidebar -->
@@ -49,7 +59,7 @@
 
   <!-- Main Content -->
   <main class="md:ml-64">
-    <!-- Header -->
+    <!-- Header (desktop) -->
     <header class="hidden md:flex justify-between items-center bg-white shadow px-6 py-4 animate-slideInFromTop">
       <h1 class="text-xl font-semibold">My Listings</h1>
       <div class="relative">
@@ -128,7 +138,7 @@
       overlay.classList.add('hidden');
     });
 
-    // Profile dropdown
+    // Desktop profile dropdown
     const profileBtn = document.getElementById('profile-menu-btn');
     const profileMenu = document.getElementById('profile-menu');
     profileBtn?.addEventListener('click', e => { 
@@ -138,6 +148,19 @@
     document.addEventListener('click', e => { 
       if (profileMenu && !profileMenu.contains(e.target) && e.target !== profileBtn){ 
         profileMenu.classList.add('hidden'); 
+      }
+    });
+
+    // Mobile profile dropdown
+    const profileBtnM = document.getElementById('profile-btn-m');
+    const profileMenuM = document.getElementById('profile-menu-m');
+    profileBtnM?.addEventListener('click', e => {
+      e.stopPropagation();
+      profileMenuM.classList.toggle('hidden');
+    });
+    document.addEventListener('click', e => {
+      if (profileMenuM && !profileMenuM.contains(e.target) && e.target !== profileBtnM) {
+        profileMenuM.classList.add('hidden');
       }
     });
 
