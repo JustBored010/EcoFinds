@@ -26,12 +26,14 @@
     <!-- Header with Logo and Cart Icon -->
     <div class="flex items-center justify-between mb-8">
       <img src="https://raw.githubusercontent.com/JustBored010/EcoFinds/main/R_cropped.png" alt="EcoFinds Logo" class="w-12 h-12 rounded-full">
-      <button class="relative p-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-300">
+
+      <!-- ✅ Fixed Cart Icon -->
+      <a href="cart.html" class="relative p-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-300 cursor-pointer" aria-label="View Cart">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.056.848L7.43 18.067a2.25 2.25 0 002.248 1.933h9.432a2.25 2.25 0 002.247-1.933L21.75 6.25c.1-1-.7-1.8-1.7-1.8h-16.5" />
         </svg>
-        <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
-      </button>
+        <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
+      </a>
     </div>
 
     <!-- Image -->
@@ -90,6 +92,7 @@
     let cartCount = 0;
     const cartCountEl = document.getElementById("cart-count");
     const messageBox = document.getElementById("messageBox");
+
     document.getElementById("addToCartBtn").addEventListener("click", () => {
       cartCount++;
       cartCountEl.textContent = cartCount;
