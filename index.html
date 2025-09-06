@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <!-- Navbar Links -->
+    <!-- Desktop Navbar Links -->
     <ul class="hidden md:flex gap-6 font-medium">
       <li><a href="#hero" class="hover:text-gray-200">Home</a></li>
       <li><a href="#products" class="hover:text-gray-200">Browse</a></li>
@@ -40,7 +40,7 @@
       <li><a href="#contact" class="hover:text-gray-200">Contact</a></li>
     </ul>
 
-    <!-- Auth Buttons -->
+    <!-- Desktop Auth Buttons -->
     <div class="hidden md:flex gap-3">
       <a href="./auth/login.html" class="px-4 py-2 rounded-lg bg-white text-green-700 font-semibold hover:bg-gray-200 transition">
         Login
@@ -49,7 +49,32 @@
         Sign Up
       </a>
     </div>
+
+    <!-- Hamburger Icon (Mobile) -->
+    <button id="menu-btn" class="md:hidden flex items-center focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
   </nav>
+
+  <!-- Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center gap-4 bg-green-700 text-white py-6 shadow-md mt-16">
+    <a href="#hero" class="hover:text-gray-200">Home</a>
+    <a href="#products" class="hover:text-gray-200">Browse</a>
+    <a href="#sell" class="hover:text-gray-200">Sell an Item</a>
+    <a href="#about" class="hover:text-gray-200">About</a>
+    <a href="#contact" class="hover:text-gray-200">Contact</a>
+    <div class="flex flex-col gap-3 w-3/4">
+      <a href="./auth/login.html" class="w-full px-4 py-2 rounded-lg bg-white text-green-700 font-semibold text-center hover:bg-gray-200 transition">
+        Login
+      </a>
+      <a href="./auth/signup.html" class="w-full px-4 py-2 rounded-lg bg-yellow-400 text-gray-900 font-semibold text-center hover:bg-yellow-500 transition">
+        Sign Up
+      </a>
+    </div>
+  </div>
 
   <!-- Hero -->
   <section id="hero" class="hero-bg h-screen flex flex-col justify-center items-center text-center text-white px-6">
@@ -66,8 +91,7 @@
   <section id="products" class="py-16 px-6 md:px-16 bg-gray-50">
     <h2 class="text-3xl font-bold text-center mb-10">Featured Listings</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-
-      <!-- Card 1 -->
+      <!-- Example Product Cards -->
       <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition">
         <img src="https://images.unsplash.com/photo-1580927752452-b67b2db6f7b5?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover rounded-t-xl" alt="Water Bottle">
         <div class="p-4 text-center">
@@ -76,37 +100,7 @@
           <a href="#" class="mt-3 w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Buy Now</a>
         </div>
       </div>
-
-      <!-- Card 2 -->
-      <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition">
-        <img src="https://images.unsplash.com/photo-1593032465170-0b97e0b2b90c?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover rounded-t-xl" alt="Tote Bag">
-        <div class="p-4 text-center">
-          <h3 class="text-lg font-semibold">Organic Tote</h3>
-          <p class="text-green-600 font-bold">$7 (Second-hand)</p>
-          <a href="#" class="mt-3 w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Buy Now</a>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition">
-        <img src="https://images.unsplash.com/photo-1572287475941-8b0d45247a0e?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover rounded-t-xl" alt="Bamboo Toothbrush">
-        <div class="p-4 text-center">
-          <h3 class="text-lg font-semibold">Bamboo Toothbrush</h3>
-          <p class="text-green-600 font-bold">$2 (Eco Swap)</p>
-          <a href="#" class="mt-3 w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Buy Now</a>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition">
-        <img src="https://images.unsplash.com/photo-1619859146010-d6a6a82b4c31?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover rounded-t-xl" alt="Solar Charger">
-        <div class="p-4 text-center">
-          <h3 class="text-lg font-semibold">Solar Charger</h3>
-          <p class="text-green-600 font-bold">$25 (Used)</p>
-          <a href="#" class="mt-3 w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Buy Now</a>
-        </div>
-      </div>
-
+      <!-- Add more product cards as needed -->
     </div>
   </section>
 
@@ -136,5 +130,14 @@
     <p>© 2025 EcoFinds | Give Goods a Second Life 🌍</p>
   </footer>
 
+  <!-- Script to toggle mobile menu -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
