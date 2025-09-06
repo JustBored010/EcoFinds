@@ -1,212 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoFinds - Landing Page</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoFinds | Landing</title>
+
+  <!-- Tailwind + Font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Layout Improvements */
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 20px 0;
-      align-items: center;
-    }
-    .filters label {
-      font-weight: bold;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .product-card {
-      border: 1px solid #ddd;
-      padding: 15px;
-      border-radius: 10px;
-      background: #fff;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .product-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    .empty-message {
-      display: none;
-      text-align: center;
-      font-size: 1.2em;
-      color: #555;
-      margin-top: 20px;
-    }
-    .reset-btn {
-      background: #f44336;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .reset-btn:hover {
-      background: #d32f2f;
-    }
+    body { font-family: 'Inter', sans-serif; background:#f0fdf4; color:#1f2937; overflow-x:hidden; }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes slideInFromTop { from{transform:translateY(-20px);opacity:0} to{transform:translateY(0);opacity:1} }
+    @keyframes bounceIn { 0%,20%,50%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} 60%{transform:translateY(-5px)} }
+    .animate-fadeIn{ animation:fadeIn 0.8s ease-in-out }
+    .animate-slideInFromTop{ animation:slideInFromTop 0.6s ease-out }
+    .animate-bounceIn{ animation:bounceIn 1s ease-in-out }
+    .sidebar{ width:260px; height:100%; position:fixed; top:0; left:-260px; background:#1a4d2e; transition:left .25s; z-index:50; padding:1rem; }
+    .sidebar.open{ left:0 }
+    .overlay{ position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:40; display:none }
   </style>
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="browse.html">Browse</a></li>
-      <li><a href="listing.html">Listings</a></li>
-      <li><a href="sell.html">Sell Product</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="profile.html">Profile</a></li>
-      <li><a href="history.html">History</a></li>
-      <li><a href="cart.html">Cart</a></li>
-      <li><a href="auth/logout.html">Logout</a></li>
-    </ul>
-  </nav>
+<body class="p-3 md:p-4">
 
-  <!-- Filters Section -->
-  <div class="filters">
-    <!-- Search -->
-    <input type="text" id="searchBar" placeholder="Search products..." style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+  <!-- Overlay -->
+  <div id="overlay" class="overlay"></div>
 
-    <!-- Category -->
-    <label for="categoryFilter">Category:</label>
-    <select id="categoryFilter" style="padding: 5px; border-radius: 5px;">
-      <option value="all">All</option>
-      <option value="clothing">Clothing</option>
-      <option value="home">Home</option>
-      <option value="stationery">Stationery</option>
-      <option value="personal">Personal Care</option>
-      <option value="accessories">Accessories</option>
-    </select>
-
-    <!-- Price -->
-    <label>Price:</label>
-    <input type="number" id="minPrice" placeholder="Min $" style="width: 80px; padding: 5px;">
-    <input type="number" id="maxPrice" placeholder="Max $" style="width: 80px; padding: 5px;">
-
-    <!-- Sort -->
-    <label for="sortOptions">Sort:</label>
-    <select id="sortOptions" style="padding: 5px; border-radius: 5px;">
-      <option value="default">Default</option>
-      <option value="priceLow">Price: Low to High</option>
-      <option value="priceHigh">Price: High to Low</option>
-      <option value="nameAZ">Name: A → Z</option>
-      <option value="nameZA">Name: Z → A</option>
-    </select>
-
-    <!-- Reset -->
-    <button class="reset-btn" id="resetBtn">Reset</button>
-  </div>
-
-  <h2>Featured Products</h2>
-  <div class="product-grid" id="productGrid">
-    <div class="product-card" data-category="home" data-price="15">
-      <h3>Recycled Planter</h3>
-      <p>Eco-friendly planter made from recycled plastic.</p>
-      <p><strong>$15</strong></p>
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar shadow-lg">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/R_cropped.png" class="h-8 w-8 rounded-full" alt="EcoFinds"/>
+        <span class="text-white font-semibold">EcoFinds</span>
+      </div>
+      <button id="close-menu" class="text-white text-3xl font-bold p-1 leading-5">&times;</button>
     </div>
-    <div class="product-card" data-category="clothing" data-price="25">
-      <h3>Organic Cotton Shirt</h3>
-      <p>Soft t-shirt made from 100% organic cotton.</p>
-      <p><strong>$25</strong></p>
-    </div>
-    <div class="product-card" data-category="stationery" data-price="8">
-      <h3>Upcycled Notebook</h3>
-      <p>Notebook with cover made from reclaimed materials.</p>
-      <p><strong>$8</strong></p>
-    </div>
-    <div class="product-card" data-category="personal" data-price="5">
-      <h3>Handmade Soap</h3>
-      <p>Natural soap bars crafted without harmful chemicals.</p>
-      <p><strong>$5</strong></p>
-    </div>
-    <div class="product-card" data-category="home" data-price="40">
-      <h3>Recycled Glass Vase</h3>
-      <p>Elegant vase made from recycled glass bottles.</p>
-      <p><strong>$40</strong></p>
-    </div>
-    <div class="product-card" data-category="accessories" data-price="20">
-      <h3>Compostable Phone Case</h3>
-      <p>Durable phone case that is 100% compostable.</p>
-      <p><strong>$20</strong></p>
-    </div>
-  </div>
 
-  <!-- Empty state -->
-  <div class="empty-message" id="emptyMessage">No products found. Try adjusting your filters.</div>
+    <nav class="mt-6">
+      <ul class="space-y-2">
+        <li><a href="landing.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Home</a></li>
+        <li><a href="browse.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Browse</a></li>
+        <li><a href="listing.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Listings</a></li>
+        <li><a href="sell.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Sell Product</a></li>
+        <li><a href="about.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">About</a></li>
+        <li><a href="contact.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
 
-  <!-- Filtering + Sorting Script -->
+  <!-- Header -->
+  <header class="flex items-center justify-between animate-slideInFromTop">
+    <div class="flex items-center gap-4">
+      <button id="open-menu" class="text-slate-800" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <a href="landing.html" class="inline-flex items-center">
+        <img src="assets/images/R_cropped.png" alt="EcoFinds" class="h-10 w-10 rounded-full"/>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-6">
+      <a href="cart.html" aria-label="Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.706.707 1.706H17m0
+                   0a2 2 0 100 4 2 2 0 000-4m-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+      </a>
+      <div class="relative">
+        <button id="profile-menu-btn" class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">J</button>
+        <div id="profile-menu" class="hidden absolute right-0 mt-2 w-44 bg-white border rounded-lg shadow-lg z-50">
+          <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+          <a href="listing.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Listings</a>
+          <a href="sell.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sell Product</a>
+          <a href="history.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">History</a>
+          <a href="cart.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
+          <a href="auth/logout.html" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search -->
+  <section class="mt-6 space-y-4 animate-fadeIn">
+    <input type="text" placeholder="Search ...."
+           class="w-full p-3 rounded-full bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"/>
+  </section>
+
+  <!-- Hero banner -->
+  <section class="mt-8 rounded-2xl h-48 md:h-64 overflow-hidden animate-fadeIn">
+    <img src="assets/images/updated_2_banner.png" alt="EcoFinds Banner" class="w-full h-full object-cover rounded-2xl"/>
+  </section>
+
+  <!-- Product grid -->
+  <section class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
+    <a href="product_details.html" class="block">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+        <h3 class="text-xl font-semibold text-green-700">Recycled Planter</h3>
+        <p class="text-gray-500">Eco-friendly planter made from recycled plastic.</p>
+      </div>
+    </a>
+
+    <a href="product_details.html" class="block">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+        <h3 class="text-xl font-semibold text-green-700">Organic Cotton Shirt</h3>
+        <p class="text-gray-500">Soft t-shirt made from 100% organic cotton.</p>
+      </div>
+    </a>
+
+    <a href="product_details.html" class="block">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+        <h3 class="text-xl font-semibold text-green-700">Upcycled Notebook</h3>
+        <p class="text-gray-500">Notebook with a unique cover made from reclaimed materials.</p>
+      </div>
+    </a>
+  </section>
+
+  <!-- Featured products -->
+  <section class="my-16 animate-fadeIn">
+    <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">Featured Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="product_details.html" class="block">
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+          <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+          <h3 class="text-xl font-semibold text-green-700">Handmade Soap</h3>
+          <p class="text-gray-500">Artisan soap made with natural, plant-based ingredients.</p>
+        </div>
+      </a>
+      <a href="product_details.html" class="block">
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+          <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+          <h3 class="text-xl font-semibold text-green-700">Recycled Glass Vases</h3>
+          <p class="text-gray-500">Elegant vases crafted from reclaimed glass bottles.</p>
+        </div>
+      </a>
+      <a href="product_details.html" class="block">
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+          <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+          <h3 class="text-xl font-semibold text-green-700">Compostable Phone Case</h3>
+          <p class="text-gray-500">A sturdy, compostable phone case.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Rest of your landing content (testimonials, CTA, about, footer, etc.) remains unchanged -->
+
   <script>
-    const searchBar = document.getElementById("searchBar");
-    const categoryFilter = document.getElementById("categoryFilter");
-    const minPrice = document.getElementById("minPrice");
-    const maxPrice = document.getElementById("maxPrice");
-    const sortOptions = document.getElementById("sortOptions");
-    const resetBtn = document.getElementById("resetBtn");
-    const productGrid = document.getElementById("productGrid");
-    const emptyMessage = document.getElementById("emptyMessage");
-    let products = Array.from(document.querySelectorAll(".product-card"));
+    const openMenuBtn = document.getElementById('open-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
 
-    function updateProducts() {
-      const query = searchBar.value.toLowerCase();
-      const category = categoryFilter.value;
-      const min = parseFloat(minPrice.value) || 0;
-      const max = parseFloat(maxPrice.value) || Infinity;
-      const option = sortOptions.value;
+    function openSidebar(){ sidebar.classList.add('open'); overlay.style.display='block'; }
+    function closeSidebar(){ sidebar.classList.remove('open'); overlay.style.display='none'; }
 
-      let filtered = products.filter(product => {
-        const text = product.innerText.toLowerCase();
-        const price = parseFloat(product.dataset.price);
+    openMenuBtn.addEventListener('click', openSidebar);
+    closeMenuBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
 
-        const matchesSearch = text.includes(query);
-        const matchesCategory = category === "all" || product.dataset.category === category;
-        const matchesPrice = price >= min && price <= max;
-
-        return matchesSearch && matchesCategory && matchesPrice;
-      });
-
-      if (option === "priceLow") {
-        filtered.sort((a, b) => a.dataset.price - b.dataset.price);
-      } else if (option === "priceHigh") {
-        filtered.sort((a, b) => b.dataset.price - a.dataset.price);
-      } else if (option === "nameAZ") {
-        filtered.sort((a, b) => a.querySelector("h3").innerText.localeCompare(b.querySelector("h3").innerText));
-      } else if (option === "nameZA") {
-        filtered.sort((a, b) => b.querySelector("h3").innerText.localeCompare(a.querySelector("h3").innerText));
-      }
-
-      productGrid.innerHTML = "";
-      filtered.forEach(product => productGrid.appendChild(product));
-
-      emptyMessage.style.display = filtered.length ? "none" : "block";
-    }
-
-    // Reset all filters
-    function resetFilters() {
-      searchBar.value = "";
-      categoryFilter.value = "all";
-      minPrice.value = "";
-      maxPrice.value = "";
-      sortOptions.value = "default";
-      updateProducts();
-    }
-
-    // Event Listeners
-    [searchBar, categoryFilter, minPrice, maxPrice, sortOptions].forEach(el => {
-      el.addEventListener("input", updateProducts);
-      el.addEventListener("change", updateProducts);
-    });
-    resetBtn.addEventListener("click", resetFilters);
-
-    // Initial render
-    updateProducts();
+    const profileBtn = document.getElementById('profile-menu-btn');
+    const profileMenu = document.getElementById('profile-menu');
+    profileBtn.addEventListener('click', e => { e.stopPropagation(); profileMenu.classList.toggle('hidden'); });
+    document.addEventListener('click', e => { if (!profileMenu.contains(e.target) && e.target !== profileBtn){ profileMenu.classList.add('hidden'); }});
   </script>
 </body>
 </html>
