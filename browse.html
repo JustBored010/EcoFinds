@@ -118,50 +118,56 @@
     <p id="results-count" class="text-gray-700 mt-2 text-sm md:text-base">Showing all products</p>
   </section>
 
-  <!-- Featured Products -->
-  <section class="mt-8 animate-fadeIn">
-    <h2 class="text-2xl font-bold mb-4 text-green-700">🌟 Featured Products</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ <!-- Featured Products -->
+<section class="mt-8 animate-fadeIn">
+  <h2 class="text-2xl font-bold mb-4 text-green-700">🌟 Featured Products</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <a href="product_details.html" class="block">
       <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
         <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=800&q=80" alt="Eco Bag" class="h-40 w-full object-cover rounded-lg mb-4"/>
         <h3 class="text-lg font-semibold text-green-700">Eco Tote Bag</h3>
         <p class="text-gray-500">Reusable bag made from recycled cotton.</p>
         <p class="text-green-600 font-bold">₹12</p>
       </div>
+    </a>
+
+    <a href="product_details.html" class="block">
       <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
         <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&q=80" alt="Eco Mug" class="h-40 w-full object-cover rounded-lg mb-4"/>
         <h3 class="text-lg font-semibold text-green-700">Bamboo Coffee Mug</h3>
         <p class="text-gray-500">Keep your drinks warm in style.</p>
         <p class="text-green-600 font-bold">₹18</p>
       </div>
-    </div>
-  </section>
+    </a>
+  </div>
+</section>
 
-  <!-- Products Grid -->
-  <section id="products-section" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
-    <!-- Example Product -->
-    <div class="product-card bg-white p-4 rounded-xl shadow hover:shadow-2xl transition"
-         data-category="home" data-price="15">
-      <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=800&q=80" alt="Bottle" class="h-40 w-full object-cover rounded-lg mb-4"/>
-      <h3 class="text-lg font-semibold text-green-700">Reusable Bamboo Bottle</h3>
-      <p class="text-gray-500">Eco-friendly bottle made from bamboo.</p>
-      <p class="text-green-600 font-bold">₹15</p>
-    </div>
-    <div class="product-card bg-white p-4 rounded-xl shadow hover:shadow-2xl transition"
-         data-category="fashion" data-price="10">
-      <img src="https://images.unsplash.com/photo-1618354691550-74f1f7a416c5?w=800&q=80" alt="Bag" class="h-40 w-full object-cover rounded-lg mb-4"/>
-      <h3 class="text-lg font-semibold text-green-700">Organic Cotton Bag</h3>
-      <p class="text-gray-500">Durable bag made from organic cotton fibers.</p>
-      <p class="text-green-600 font-bold">₹10</p>
-    </div>
-    <div class="product-card bg-white p-4 rounded-xl shadow hover:shadow-2xl transition"
-         data-category="stationery" data-price="8">
-      <img src="https://images.unsplash.com/photo-1588861558371-1c6bce6e8aa0?w=800&q=80" alt="Cutlery" class="h-40 w-full object-cover rounded-lg mb-4"/>
-      <h3 class="text-lg font-semibold text-green-700">Plant-Based Cutlery Set</h3>
-      <p class="text-gray-500">Biodegradable cutlery perfect for eco dining.</p>
-      <p class="text-green-600 font-bold">₹8</p>
-    </div>
-  </section>
+<!-- Products Grid -->
+<section id="products-section" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
+  <a href="product_details.html" class="block product-card bg-white p-4 rounded-xl shadow hover:shadow-2xl transition"
+     data-category="home" data-price="15">
+    <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=800&q=80" alt="Bottle" class="h-40 w-full object-cover rounded-lg mb-4"/>
+    <h3 class="text-lg font-semibold text-green-700">Reusable Bamboo Bottle</h3>
+    <p class="text-gray-500">Eco-friendly bottle made from bamboo.</p>
+    <p class="text-green-600 font-bold">₹15</p>
+  </a>
+
+  <a href="product_details.html" class="block product-card bg-white p-4 rounded-xl shadow hover:shadow-2xl transition"
+     data-category="fashion" data-price="10">
+    <img src="https://images.unsplash.com/photo-1618354691550-74f1f7a416c5?w=800&q=80" alt="Bag" class="h-40 w-full object-cover rounded-lg mb-4"/>
+    <h3 class="text-lg font-semibold text-green-700">Organic Cotton Bag</h3>
+    <p class="text-gray-500">Durable bag made from organic cotton fibers.</p>
+    <p class="text-green-600 font-bold">₹10</p>
+  </a>
+
+  <a href="product_details.html" class="block product-card bg-white p-4 rounded-xl shadow hover:shadow-2xl transition"
+     data-category="stationery" data-price="8">
+    <img src="https://images.unsplash.com/photo-1588861558371-1c6bce6e8aa0?w=800&q=80" alt="Cutlery" class="h-40 w-full object-cover rounded-lg mb-4"/>
+    <h3 class="text-lg font-semibold text-green-700">Plant-Based Cutlery Set</h3>
+    <p class="text-gray-500">Biodegradable cutlery perfect for eco dining.</p>
+    <p class="text-green-600 font-bold">₹8</p>
+  </a>
+</section>
 
   <!-- Empty State -->
   <section id="empty-state" class="hidden text-center py-20 animate-fadeIn">
