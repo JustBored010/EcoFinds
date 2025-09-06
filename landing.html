@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoFinds | Landing</title>
+
+  <!-- Tailwind + Font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background:#f0fdf4; color:#1f2937; overflow-x:hidden; }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes slideInFromTop { from{transform:translateY(-20px);opacity:0} to{transform:translateY(0);opacity:1} }
+    @keyframes bounceIn { 0%,20%,50%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} 60%{transform:translateY(-5px)} }
+    .animate-fadeIn{ animation:fadeIn 0.8s ease-in-out }
+    .animate-slideInFromTop{ animation:slideInFromTop 0.6s ease-out }
+    .animate-bounceIn{ animation:bounceIn 1s ease-in-out }
+
+    .sidebar{ width:260px; height:100%; position:fixed; top:0; left:-260px; background:#1a4d2e; transition:left .25s; z-index:50; padding:1rem; }
+    .sidebar.open{ left:0 }
+    .overlay{ position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:40; display:none }
+  </style>
+</head>
+<body class="p-3 md:p-4">
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar shadow-lg">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/R_cropped.png" class="h-8 w-8 rounded-full" alt="EcoFinds"/>
+        <span class="text-white font-semibold">EcoFinds</span>
+      </div>
+      <button id="close-menu" class="text-white text-3xl font-bold p-1 leading-5">&times;</button>
+    </div>
+
+    <nav class="mt-6">
+      <ul class="space-y-2">
+        <li><a href="landing.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Home</a></li>
+        <li><a href="browse.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Browse</a></li>
+        <li><a href="mylistings.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">My Listings</a></li>
+        <li><a href="sell.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Add Product</a></li>
+        <li><a href="about.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">About</a></li>
+        <li><a href="contact.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Header -->
+  <header class="flex items-center justify-between animate-slideInFromTop">
+    <div class="flex items-center gap-4">
+      <button id="open-menu" class="text-slate-800" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <a href="landing.html" class="inline-flex items-center">
+        <img src="assets/images/R_cropped.png" alt="EcoFinds" class="h-10 w-10 rounded-full"/>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-6">
+      <a href="cart.html" aria-label="Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.706.707 1.706H17m0
+                   0a2 2 0 100 4 2 2 0 000-4m-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+      </a>
+      <div class="relative">
+        <button id="profile-menu-btn" class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">J</button>
+        <div id="profile-menu" class="hidden absolute right-0 mt-2 w-44 bg-white border rounded-lg shadow-lg z-50">
+          <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+          <a href="cart.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
+          <a href="auth/logout.html" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search -->
+  <section class="mt-6 space-y-4 animate-fadeIn">
+    <input type="text" placeholder="Search ...."
+           class="w-full p-3 rounded-full bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"/>
+  </section>
+
+  <!-- Hero banner -->
+  <section class="mt-8 rounded-2xl h-48 md:h-64 overflow-hidden animate-fadeIn">
+    <img src="assets/images/updated_2_banner.png" alt="EcoFinds Banner" class="w-full h-full object-cover rounded-2xl"/>
+  </section>
+
+  <!-- Banners -->
+  <section class="max-w-6xl mx-auto mt-8 grid md:grid-cols-3 gap-6 px-1 animate-fadeIn">
+    <img src="assets/images/banner_Photo.png"  class="rounded-xl shadow" alt="Banner 1"/>
+    <img src="assets/images/updated_banner.png" class="rounded-xl shadow" alt="Banner 2"/>
+    <img src="assets/images/updated_2_banner.png" class="rounded-xl shadow" alt="Banner 3"/>
+  </section>
+
+  <!-- All categories -->
+  <section class="mt-8 text-center animate-fadeIn">
+    <a href="browse.html" class="inline-block px-6 py-3 rounded-full bg-green-600 text-white font-semibold hover:bg-green-700">All Categories</a>
+  </section>
+
+  <!-- Product grid -->
+  <section class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
+    <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+      <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+      <h3 class="text-xl font-semibold text-green-700">Recycled Planter</h3>
+      <p class="text-gray-500">Eco-friendly planter made from recycled plastic.</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+      <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+      <h3 class="text-xl font-semibold text-green-700">Organic Cotton Shirt</h3>
+      <p class="text-gray-500">Soft t-shirt made from 100% organic cotton.</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+      <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+      <h3 class="text-xl font-semibold text-green-700">Upcycled Notebook</h3>
+      <p class="text-gray-500">Notebook with a unique cover made from reclaimed materials.</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+      <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+      <h3 class="text-xl font-semibold text-green-700">Bamboo Toothbrush</h3>
+      <p class="text-gray-500">An eco-friendly alternative to plastic toothbrushes.</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+      <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+      <h3 class="text-xl font-semibold text-green-700">Solar-Powered Lantern</h3>
+      <p class="text-gray-500">A lantern powered by solar energy.</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition animate-bounceIn">
+      <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+      <h3 class="text-xl font-semibold text-green-700">Reusable Shopping Bag</h3>
+      <p class="text-gray-500">Durable bag for everyday shopping.</p>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="my-16 animate-fadeIn">
+    <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">Featured Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+        <h3 class="text-xl font-semibold text-green-700">Handmade Soap</h3>
+        <p class="text-gray-500">Artisan soap made with natural, plant-based ingredients.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+        <h3 class="text-xl font-semibold text-green-700">Recycled Glass Vases</h3>
+        <p class="text-gray-500">Elegant vases crafted from reclaimed glass bottles.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
+        <h3 class="text-xl font-semibold text-green-700">Compostable Phone Case</h3>
+        <p class="text-gray-500">A sturdy, compostable phone case.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="my-16 bg-green-700 text-white py-12 px-6 rounded-2xl text-center animate-fadeIn">
+    <h2 class="text-3xl font-bold mb-4">Join the Sustainable Movement</h2>
+    <p class="text-green-100 max-w-2xl mx-auto mb-6">
+      Ready to make a difference? Start buying and selling eco-friendly products today and be part of our growing community.
+    </p>
+    <a href="sell.html" class="px-8 py-4 bg-white text-green-700 font-bold rounded-full hover:bg-gray-100">List Your Product</a>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="my-16 animate-fadeIn">
+    <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">What Our Community Says</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-xl shadow">
+        <p class="text-gray-600 italic mb-4">"EcoFinds made it so easy to find high-quality, sustainable products."</p>
+        <p class="font-semibold text-green-700">Jane D.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow">
+        <p class="text-gray-600 italic mb-4">"Selling my pre-loved items has never been simpler."</p>
+        <p class="font-semibold text-green-700">Mike R.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow">
+        <p class="text-gray-600 italic mb-4">"The community vibe is amazing. It's more than a marketplace."</p>
+        <p class="font-semibold text-green-700">Sarah P.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="my-16 text-center animate-fadeIn">
+    <h2 class="text-3xl font-bold text-green-800 mb-4">Our Mission</h2>
+    <p class="text-gray-600 max-w-2xl mx-auto">
+      We connect communities by making it easy to discover and share eco-friendly and second-hand products —
+      helping you reduce your carbon footprint one conscious choice at a time.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-800 text-white py-8 px-4 rounded-t-2xl animate-fadeIn">
+    <div class="container mx-auto flex flex-wrap justify-between items-center">
+      <div class="w-full md:w-1/3 mb-4 md:mb-0">
+        <h4 class="text-xl font-bold mb-2">EcoFinds</h4>
+        <p class="text-sm text-gray-300">&copy; 2025 EcoFinds. All rights reserved.</p>
+      </div>
+      <div class="w-full md:w-1/3 flex justify-center mb-4 md:mb-0 space-x-6">
+        <a href="about.html" class="text-gray-300 hover:text-white">About</a>
+        <a href="contact.html" class="text-gray-300 hover:text-white">Contact</a>
+        <a href="privacy.html" class="text-gray-300 hover:text-white">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const openMenuBtn = document.getElementById('open-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    function openSidebar(){ sidebar.classList.add('open'); overlay.style.display='block'; }
+    function closeSidebar(){ sidebar.classList.remove('open'); overlay.style.display='none'; }
+
+    openMenuBtn.addEventListener('click', openSidebar);
+    closeMenuBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    const profileBtn = document.getElementById('profile-menu-btn');
+    const profileMenu = document.getElementById('profile-menu');
+    profileBtn.addEventListener('click', e => { e.stopPropagation(); profileMenu.classList.toggle('hidden'); });
+    document.addEventListener('click', e => { if (!profileMenu.contains(e.target) && e.target !== profileBtn){ profileMenu.classList.add('hidden'); }});
+  </script>
+</body>
+</html>

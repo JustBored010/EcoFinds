@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoFinds | Contact</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-green-50 font-sans">
+  <nav class="flex items-center justify-between bg-green-600 p-4 shadow-md">
+    <a href="./landing.html" class="text-white font-bold text-xl">EcoFinds</a>
+    <div class="relative">
+      <button id="profile-menu-btn" class="w-10 h-10 rounded-full bg-white text-green-700 flex items-center justify-center font-bold">J</button>
+      <div id="profile-menu" class="hidden absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg z-50">
+        <a href="./profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+        <a href="./cart.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
+        <a href="./auth/logout.html" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a>
+      </div>
+    </div>
+  </nav>
+  <div class="max-w-xl mx-auto p-6 bg-white mt-6 rounded-lg shadow">
+    <h2 class="text-3xl font-bold text-green-800 mb-4">Contact Us</h2>
+    <form>
+      <label class="block mb-2">Name</label>
+      <input type="text" class="w-full p-2 border rounded mb-4" required>
+      <label class="block mb-2">Email</label>
+      <input type="email" class="w-full p-2 border rounded mb-4" required>
+      <label class="block mb-2">Message</label>
+      <textarea class="w-full p-2 border rounded mb-4" rows="4" required></textarea>
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Send</button>
+    </form>
+  </div>
+  <script>
+    const btn = document.getElementById('profile-menu-btn');
+    const menu = document.getElementById('profile-menu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    document.addEventListener('click', (e) => {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
