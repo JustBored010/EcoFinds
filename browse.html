@@ -36,7 +36,6 @@
       </div>
       <button id="close-menu" class="text-white text-3xl font-bold p-1 leading-5">&times;</button>
     </div>
-
     <nav class="mt-6">
       <ul class="space-y-2">
         <li><a href="landing.html" class="block px-3 py-2 rounded-lg text-white font-semibold hover:bg-green-600">Home</a></li>
@@ -61,7 +60,6 @@
         <img src="assets/images/R_cropped.png" alt="EcoFinds" class="h-10 w-10 rounded-full"/>
       </a>
     </div>
-
     <div class="flex items-center gap-6">
       <a href="cart.html" aria-label="Cart">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,59 +82,185 @@
     </div>
   </header>
 
-  <!-- Search -->
+  <!-- Banner -->
+  <section class="mt-6 relative rounded-2xl overflow-hidden shadow-lg animate-fadeIn">
+    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1600&q=80" alt="Eco banner" class="w-full h-60 object-cover"/>
+    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-white">Discover Eco-Friendly Products 🌿</h1>
+    </div>
+  </section>
+
+  <!-- Filters -->
   <section class="mt-6 space-y-4 animate-fadeIn">
-    <input type="text" placeholder="Search for products..."
+    <input id="search-bar" type="text" placeholder="Search for products..."
            class="w-full p-3 rounded-full bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"/>
+
+    <div class="flex flex-wrap gap-3 items-center">
+      <select id="category-filter" class="p-3 rounded-lg bg-white shadow-sm border">
+        <option value="">All Categories</option>
+        <option value="home">Home</option>
+        <option value="fashion">Fashion</option>
+        <option value="stationery">Stationery</option>
+        <option value="bath">Bath</option>
+        <option value="tech">Tech</option>
+      </select>
+
+      <div class="flex items-center gap-3">
+        <input id="price-filter" type="range" min="0" max="50" step="1" class="w-40 accent-green-600 cursor-pointer"/>
+        <span id="price-value" class="text-sm font-medium text-gray-700">≤ ₹50</span>
+      </div>
+
+      <button id="clear-filters" class="hidden px-5 py-2 bg-gray-200 rounded-lg shadow hover:bg-gray-300 transition">
+        Clear Filters
+      </button>
+    </div>
+
+    <p id="results-count" class="text-gray-700 mt-2 text-sm md:text-base">Showing all products</p>
   </section>
 
-  <!-- Product grid -->
-  <section class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
-    <a href="product_details.html" class="block">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition">
-        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
-        <h3 class="text-xl font-semibold text-green-700">Reusable Bamboo Bottle</h3>
-        <p class="text-gray-500">Eco-friendly bottle made from 100% bamboo.</p>
-        <p class="text-green-600 font-bold">₹15</p>
+  <!-- Featured Products -->
+  <section class="mt-8 animate-fadeIn">
+    <h2 class="text-2xl font-bold mb-4 text-green-700">🌟 Featured Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=800&q=80" alt="Eco Bag" class="h-40 w-full object-cover rounded-lg mb-4"/>
+        <h3 class="text-lg font-semibold text-green-700">Eco Tote Bag</h3>
+        <p class="text-gray-500">Reusable bag made from recycled cotton.</p>
+        <p class="text-green-600 font-bold">₹12</p>
       </div>
-    </a>
-
-    <a href="product_details.html" class="block">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition">
-        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
-        <h3 class="text-xl font-semibold text-green-700">Organic Cotton Bag</h3>
-        <p class="text-gray-500">Durable bag made from organic cotton fibers.</p>
-        <p class="text-green-600 font-bold">₹10</p>
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&q=80" alt="Eco Mug" class="h-40 w-full object-cover rounded-lg mb-4"/>
+        <h3 class="text-lg font-semibold text-green-700">Bamboo Coffee Mug</h3>
+        <p class="text-gray-500">Keep your drinks warm in style.</p>
+        <p class="text-green-600 font-bold">₹18</p>
       </div>
-    </a>
-
-    <a href="product_details.html" class="block">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-2xl transform hover:scale-[1.01] transition">
-        <div class="bg-gray-200 h-40 rounded-lg mb-4"></div>
-        <h3 class="text-xl font-semibold text-green-700">Plant-Based Cutlery Set</h3>
-        <p class="text-gray-500">Biodegradable cutlery perfect for eco dining.</p>
-        <p class="text-green-600 font-bold">₹8</p>
-      </div>
-    </a>
+    </div>
   </section>
 
+  <!-- Products Grid -->
+  <section id="products-section" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
+    <!-- Example Product -->
+    <div class="product-card bg-white p-4 rounded-xl shadow hover:shadow-2xl transition"
+         data-category="home" data-price="15">
+      <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=800&q=80" alt="Bottle" class="h-40 w-full object-cover rounded-lg mb-4"/>
+      <h3 class="text-lg font-semibold text-green-700">Reusable Bamboo Bottle</h3>
+      <p class="text-gray-500">Eco-friendly bottle made from bamboo.</p>
+      <p class="text-green-600 font-bold">₹15</p>
+    </div>
+    <div class="product-card bg-white p-4 rounded-xl shadow hover:shadow-2xl transition"
+         data-category="fashion" data-price="10">
+      <img src="https://images.unsplash.com/photo-1618354691550-74f1f7a416c5?w=800&q=80" alt="Bag" class="h-40 w-full object-cover rounded-lg mb-4"/>
+      <h3 class="text-lg font-semibold text-green-700">Organic Cotton Bag</h3>
+      <p class="text-gray-500">Durable bag made from organic cotton fibers.</p>
+      <p class="text-green-600 font-bold">₹10</p>
+    </div>
+    <div class="product-card bg-white p-4 rounded-xl shadow hover:shadow-2xl transition"
+         data-category="stationery" data-price="8">
+      <img src="https://images.unsplash.com/photo-1588861558371-1c6bce6e8aa0?w=800&q=80" alt="Cutlery" class="h-40 w-full object-cover rounded-lg mb-4"/>
+      <h3 class="text-lg font-semibold text-green-700">Plant-Based Cutlery Set</h3>
+      <p class="text-gray-500">Biodegradable cutlery perfect for eco dining.</p>
+      <p class="text-green-600 font-bold">₹8</p>
+    </div>
+  </section>
+
+  <!-- Empty State -->
+  <section id="empty-state" class="hidden text-center py-20 animate-fadeIn">
+    <h2 class="text-2xl font-bold text-gray-700">No products found</h2>
+    <p class="text-gray-500 mt-2">Try adjusting your filters</p>
+    <button id="reset-filters" class="mt-4 px-5 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition">
+      Reset Filters
+    </button>
+  </section>
+
+  <!-- Scripts -->
   <script>
+    // Sidebar
     const openMenuBtn = document.getElementById('open-menu');
     const closeMenuBtn = document.getElementById('close-menu');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
-
     function openSidebar(){ sidebar.classList.add('open'); overlay.style.display='block'; }
     function closeSidebar(){ sidebar.classList.remove('open'); overlay.style.display='none'; }
-
     openMenuBtn.addEventListener('click', openSidebar);
     closeMenuBtn.addEventListener('click', closeSidebar);
     overlay.addEventListener('click', closeSidebar);
 
+    // Profile Menu
     const profileBtn = document.getElementById('profile-menu-btn');
     const profileMenu = document.getElementById('profile-menu');
     profileBtn.addEventListener('click', e => { e.stopPropagation(); profileMenu.classList.toggle('hidden'); });
     document.addEventListener('click', e => { if (!profileMenu.contains(e.target) && e.target !== profileBtn){ profileMenu.classList.add('hidden'); }});
+
+    // Filters
+    const searchBar = document.getElementById("search-bar");
+    const categoryFilter = document.getElementById("category-filter");
+    const priceFilter = document.getElementById("price-filter");
+    const priceValue = document.getElementById("price-value");
+    const productCards = document.querySelectorAll(".product-card");
+    const resultsCount = document.getElementById("results-count");
+    const clearBtn = document.getElementById("clear-filters");
+    const emptyState = document.getElementById("empty-state");
+    const productSection = document.getElementById("products-section");
+    const resetBtn = document.getElementById("reset-filters");
+
+    // Set slider max dynamically
+    const maxPrice = Math.max(...Array.from(productCards).map(card => parseFloat(card.dataset.price)));
+    priceFilter.max = maxPrice;
+    priceValue.textContent = `≤ ₹${priceFilter.value}`;
+
+    function filterProducts() {
+      const query = searchBar.value.toLowerCase().trim();
+      const category = categoryFilter.value;
+      const maxVal = parseFloat(priceFilter.value) || maxPrice;
+
+      let visibleCount = 0;
+      productCards.forEach(card => {
+        const matches =
+          card.innerText.toLowerCase().includes(query) &&
+          (!category || card.dataset.category === category) &&
+          parseFloat(card.dataset.price) <= maxVal;
+        card.style.display = matches ? "block" : "none";
+        if (matches) visibleCount++;
+      });
+
+      if (visibleCount === 0) {
+        productSection.classList.add("hidden");
+        emptyState.classList.remove("hidden");
+        resultsCount.textContent = "No products found";
+      } else {
+        productSection.classList.remove("hidden");
+        emptyState.classList.add("hidden");
+        resultsCount.textContent =
+          query || category || maxVal < maxPrice
+            ? `Showing ${visibleCount} product${visibleCount > 1 ? "s" : ""}`
+            : `Showing all ${productCards.length} products`;
+      }
+      clearBtn.classList.toggle("hidden", !(query || category || maxVal < maxPrice));
+    }
+
+    searchBar.addEventListener("input", filterProducts);
+    categoryFilter.addEventListener("change", filterProducts);
+    priceFilter.addEventListener("input", () => {
+      priceValue.textContent = `≤ ₹${priceFilter.value}`;
+      filterProducts();
+    });
+    clearBtn.addEventListener("click", () => {
+      searchBar.value = "";
+      categoryFilter.value = "";
+      priceFilter.value = maxPrice;
+      priceValue.textContent = `≤ ₹${maxPrice}`;
+      filterProducts();
+    });
+    resetBtn.addEventListener("click", () => {
+      searchBar.value = "";
+      categoryFilter.value = "";
+      priceFilter.value = maxPrice;
+      priceValue.textContent = `≤ ₹${maxPrice}`;
+      filterProducts();
+    });
+
+    // Run once
+    filterProducts();
   </script>
 </body>
 </html>
